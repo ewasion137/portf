@@ -3,255 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ewasion137 | Diverse developer</title>
-    <link rel="stylesheet" href="style.css">
+    <title>ewasion137 | Software & Systems Developer</title>
+    <!-- Dynamic theme stylesheet with ID for JS switching -->
+    <link rel="stylesheet" id="theme-stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;0,800;1,400&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Low-Level Hex Stream Canvas Background -->
-    <canvas id="kernel-canvas"></canvas>
+    <header class="site-header">
+        <nav class="navbar">
+            <div class="brand">
+                <span class="status-dot"></span>
+                <span class="brand-name">ewasion137</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="#about">about</a></li>
+                <li><a href="#projects">projects</a></li>
+                <li><a href="#specs">specs</a></li>
+            </ul>
 
-    <!-- Floating Top Navigation -->
-    <nav class="navbar kinetic-float-fast">
-        <div class="nav-brand">
-            <span class="pulse-dot"></span>
-            <span class="brand-text">ewasion137 portfolio</span>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#about" class="kinetic-link">about</a></li>
-            <li><a href="#projects" class="kinetic-link">projects</a></li>
-            <li><a href="#specs" class="kinetic-link">specs</a></li>
-        </ul>
-    </nav>
+            <!-- Theme Switcher Controls -->
+            <div class="theme-switcher">
+                <span class="theme-label">Theme:</span>
+                <button class="theme-btn active" data-theme="style.css">Brutal</button>
+                <button class="theme-btn" data-theme="ripterry.css">TGYS</button>
+            </div>
+        </nav>
+    </header>
 
     <main class="container">
         <!-- Hero Section -->
-        <section class="hero-section kinetic-float-1">
-            <div class="hero-badge kinetic-float-2">
-                <span class="code-symbol">x86_64</span> only.
-            </div>
-            <h1 class="hero-title kinetic-float-3">
-                Building OS Kernels, WMs and Tools for everyone.
-            </h1>
+        <section class="hero-section">
+            <div class="badge">x86_64 / Systems & Applications</div>
+            <h1 class="hero-title">Developing OS Kernels, Desktop Tools & Software.</h1>
+            <p class="hero-desc">
+                Focusing on low-level programming, C/C++, x86_64 Assembly, and clean UI applications.
+            </p>
             <div class="hero-actions">
-                <a href="https://github.com/ewasion137" target="_blank" class="btn btn-primary kinetic-float-slow">
-                    GitHub Profile
-                </a>
-                <a href="https://github.com/Equinox-Collective" target="_blank" class="btn btn-secondary kinetic-float-fast">
-                    My Organisation
-                </a>
-                <a href="https://ko-fi.com/ewasion" target="_blank" class="btn btn-kofi kinetic-float-3">
-                    Support (Ko-fi)
-                </a>
+                <a href="https://github.com/ewasion137" target="_blank" class="btn btn-primary">GitHub Profile</a>
+                <a href="https://github.com/Equinox-Collective" target="_blank" class="btn btn-secondary">Organization</a>
+                <a href="https://ko-fi.com/ewasion" target="_blank" class="btn btn-accent">Support (Ko-fi)</a>
             </div>
         </section>
 
-        <!-- About Me Section -->
+        <!-- About Section -->
         <section id="about" class="section">
-            <h2 class="section-title kinetic-float-slow"><span class="accent">&gt;</span> System Info</h2>
+            <h2 class="section-title">System Info</h2>
             
-            <div class="about-grid">
-                <div class="node-card kinetic-float-1" data-tilt>
-                    <div class="card-corner corner-tl"></div>
-                    <div class="card-corner corner-br"></div>
+            <div class="grid grid-2">
+                <div class="card">
                     <h3>Background</h3>
                     <p>
-                        From GameDev into WebDev, OSDev, and AppDev. Was a cheat developer but dumped it.
+                        Transitioned from GameDev to WebDev, OSDev, and Desktop Application development. Focused on system architecture and efficient software.
                     </p>
                 </div>
                 
-                <div class="node-card kinetic-float-3" data-tilt>
-                    <div class="card-corner corner-tl"></div>
-                    <div class="card-corner corner-br"></div>
+                <div class="card">
                     <h3>Interests</h3>
                     <p>
-                        Exploring systems, and trying to code something new. Also im a producer but too shy to share my songs
+                        Operating system design, low-level hardware abstraction, audio processing tools, and music production.
                     </p>
                 </div>
             </div>
 
             <!-- Stack Container -->
-            <div class="node-card stack-card kinetic-float-2">
-                <h3>Languages i code.</h3>
+            <div class="card stack-card">
+                <h3>Technical Stack</h3>
                 <div class="stack-tags">
-                    <span class="tag tag-core kinetic-float-fast">C / C++</span>
-                    <span class="tag tag-core kinetic-float-3">x86_64 ASM</span>
-                    <span class="tag kinetic-float-slow">C# (.NET)</span>
-                    <span class="tag kinetic-float-1">Lua</span>
-                    <span class="tag kinetic-float-2">JS/CSS/HTML</span>
-                    <span class="tag kinetic-float-fast">TypeScript</span>
-                    <span class="tag kinetic-float-2">Python</span>
+                    <span class="tag tag-core">C / C++</span>
+                    <span class="tag tag-core">x86_64 ASM</span>
+                    <span class="tag">C# (.NET)</span>
+                    <span class="tag">Lua</span>
+                    <span class="tag">JavaScript / TypeScript</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">HTML / CSS</span>
                 </div>
             </div>
         </section>
 
         <!-- Projects Grid -->
         <section id="projects" class="section">
-            <div class="section-header kinetic-float-2">
-                <h2 class="section-title"><span class="accent">&gt;</span> My projects </h2>
+            <div class="section-header">
+                <h2 class="section-title">Projects</h2>
                 <div class="filter-group">
                     <button class="filter-btn active" data-filter="all">ALL</button>
                     <button class="filter-btn" data-filter="osdev">OSDev</button>
                     <button class="filter-btn" data-filter="desktop">AppDev</button>
-                    <button class="filter-btn" data-filter="web">WebDev</button>
+                    <button class="filter-btn" data-filter="web">Web</button>
                 </div>
             </div>
 
             <div class="projects-grid">
-                <!-- Project 1: EquinoxOS -->
-                <article class="node-card project-card kinetic-float-1" data-category="osdev" data-tilt>
+                <!-- Project: EquinoxOS -->
+                <article class="card project-card" data-category="osdev">
                     <div class="card-meta">
-                        <span class="meta-type">OS</span>
-                        <span class="status-indicator status-gray">PAUSED</span>
+                        <span class="meta-type">OS Kernel</span>
+                        <span class="status status-paused">PAUSED</span>
                     </div>
                     <h3 class="project-title">EquinoxOS</h3>
                     <p class="project-desc">
-                        Monolithic x86_64 OS built with C and ASM. Uses Limine bootloader. Ring 3, Scheduler, FAT32/EXT2 VFS, AC97 audio, DOOM, and BearSSL, QuickJS, SDL2.
+                        Monolithic x86_64 OS built with C and Assembly using Limine bootloader. Includes Ring 3, task scheduler, FAT32/EXT2 VFS, AC97 audio driver, and custom ports.
                     </p>
                     <div class="project-tags">
-                        <span>C</span><span>ASM</span>
+                        <span>C</span><span>ASM</span><span>Limine</span>
                     </div>
-                    <a href="https://github.com/Equinox-Collective/EquinoxOS" target="_blank" class="card-link">OPEN LINK   &rarr;</a>
+                    <a href="https://github.com/Equinox-Collective/EquinoxOS" target="_blank" class="card-link">View Repository &rarr;</a>
                 </article>
 
-                <article class="node-card project-card kinetic-float-1" data-category="osdev" data-tilt>
+                <!-- Project: EquantOS -->
+                <article class="card project-card" data-category="osdev">
                     <div class="card-meta">
-                        <span class="meta-type">OS</span>
-                        <span class="status-indicator status-green">ACTIVE DEV</span>
+                        <span class="meta-type">OS Kernel</span>
+                        <span class="status status-active">ACTIVE</span>
                     </div>
                     <h3 class="project-title">EquantOS</h3>
                     <p class="project-desc">
-                        Started a new OS with EquinoxOS experience, without trash in the SDK, Kernel and etc. Already done Ring 3.
+                        A fresh OS core designed with refined architecture, minimal bloat in the kernel SDK, and structured Ring 3 execution model.
                     </p>
                     <div class="project-tags">
                         <span>C</span><span>ASM</span>
                     </div>
-                    <a href="https://github.com/Equinox-Collective/EquantOS" target="_blank" class="card-link">OPEN LINK &rarr;</a>
+                    <a href="https://github.com/Equinox-Collective/EquantOS" target="_blank" class="card-link">View Repository &rarr;</a>
                 </article>
 
-                <!-- Project 2: Cremniy -->
-                <article class="node-card project-card kinetic-float-3" data-category="osdev desktop" data-tilt>
+                <!-- Project: Cremniy -->
+                <article class="card project-card" data-category="osdev desktop">
                     <div class="card-meta">
-                        <span class="meta-type">IDE</span>
-                        <span class="status-indicator status-green">ACTIVE DEV</span>
+                        <span class="meta-type">Tool / IDE</span>
+                        <span class="status status-active">ACTIVE</span>
                     </div>
                     <h3 class="project-title">Cremniy</h3>
                     <p class="project-desc">
-                        All-in-one low-level development environment. Has a HEX editor, disassembler, and binary analysis tools. (I'm not the creator/maintainer, but a contributor)
+                        Low-level development environment containing a HEX editor, disassembler, and binary inspection tools. (Contributor)
                     </p>
                     <div class="project-tags">
                         <span>C++</span><span>Qt</span><span>CMake</span>
                     </div>
-                    <a href="https://github.com/igmunv/cremniy" target="_blank" class="card-link">OPEN LINK &rarr;</a>
+                    <a href="https://github.com/igmunv/cremniy" target="_blank" class="card-link">View Repository &rarr;</a>
                 </article>
 
-                <!-- Project 3: HyprWin -->
-                <article class="node-card project-card kinetic-float-2" data-category="desktop" data-tilt>
+                <!-- Project: HyprWin -->
+                <article class="card project-card" data-category="desktop">
                     <div class="card-meta">
-                        <span class="meta-type">WM</span>
-                        <span class="status-indicator status-gray">PAUSED</span>
+                        <span class="meta-type">Window Manager</span>
+                        <span class="status status-paused">PAUSED</span>
                     </div>
                     <h3 class="project-title">HyprWin</h3>
                     <p class="project-desc">
-                        Windows tiling window manager inspired by Hyprland.
+                        Tiling window manager for Windows inspired by Hyprland dynamic layout mechanics.
                     </p>
                     <div class="project-tags">
                         <span>Lua</span><span>C++</span>
                     </div>
-                    <a href="https://github.com/ewasion137/HyprWin" target="_blank" class="card-link">OPEN LINK &rarr;</a>
+                    <a href="https://github.com/ewasion137/HyprWin" target="_blank" class="card-link">View Repository &rarr;</a>
                 </article>
 
-                <!-- Project 5: ZenithPlayer -->
-                <article class="node-card project-card kinetic-float-1" data-category="web desktop" data-tilt>
+                <!-- Project: ZenithPlayer -->
+                <article class="card project-card" data-category="web desktop">
                     <div class="card-meta">
-                        <span class="meta-type">AUDIO</span>
-                        <span class="status-indicator status-blue">FINISHED</span>
+                        <span class="meta-type">Audio App</span>
+                        <span class="status status-done">COMPLETED</span>
                     </div>
                     <h3 class="project-title">ZenithPlayer</h3>
                     <p class="project-desc">
-                        Custom desktop (Windows, Linux) audio player.
+                        Custom desktop audio playback application built for cross-platform desktop execution.
                     </p>
                     <div class="project-tags">
-                        <span>Electron (JS)</span>
+                        <span>Electron</span><span>JS</span>
                     </div>
-                    <a href="https://github.com/ewasion137/ZenithPlayer" target="_blank" class="card-link">OPEN LINK &rarr;</a>
+                    <a href="https://github.com/ewasion137/ZenithPlayer" target="_blank" class="card-link">View Repository &rarr;</a>
                 </article>
 
-                <!-- PrHject 6: winfortune -->
-                <article class="node-card project-card kinetic-float-3" data-category="desktop" data-tilt>
+                <!-- Project: winfortune -->
+                <article class="card project-card" data-category="desktop">
                     <div class="card-meta">
-                        <span class="meta-type">FUN</span>
-                        <span class="status-indicator status-red">ARCHIVED</span>
+                        <span class="meta-type">Utility</span>
+                        <span class="status status-archived">ARCHIVED</span>
                     </div>
                     <h3 class="project-title">winfortune</h3>
                     <p class="project-desc">
-                        Port of the legendary BSD <code class="code-inline">fortune</code> fun app for Windows.
+                        Windows port of the classic BSD fortune command-line utility.
                     </p>
                     <div class="project-tags">
                         <span>C</span>
                     </div>
-                    <a href="https://github.com/ewasion137/winfortune" target="_blank" class="card-link">OPEN LINK &rarr;</a>
-                </article>
-
-                <!-- Project 7: y2mmod -->
-                <article class="node-card project-card kinetic-float-fast" data-category="web desktop" data-tilt>
-                    <div class="card-meta">
-                        <span class="meta-type">MODDED CLIENT</span>
-                        <span class="status-indicator status-gray">PAUSED</span>
-                    </div>
-                    <h3 class="project-title">y2mmod</h3>
-                    <p class="project-desc">
-                        YouTube Music desktop client with audio downloading, speed controls, and an equalizer.
-                    </p>
-                    <div class="project-tags">
-                        <span>Electron (TS)</span>
-                    </div>
-                    <a href="https://github.com/ewasion137/y2mmod" target="_blank" class="card-link">OPEN LINK   &rarr;</a>
-                </article>
-
-                <!-- Project 8: AmbientSP -->
-                <article class="node-card project-card kinetic-float-2" data-category="web desktop" data-tilt>
-                    <div class="card-meta">
-                        <span class="meta-type">BG AUDIO</span>
-                        <span class="status-indicator status-blue">FINISHED</span>
-                    </div>
-                    <h3 class="project-title">AmbientSP</h3>
-                    <p class="project-desc">
-                        Free ambient noise app for people that like the background sound while they work or relax.
-                    </p>
-                    <div class="project-tags">
-                        <span>Electron (JS)</span>
-                    </div>
-                    <a href="https://github.com/ewasion137/AmbientSP" target="_blank" class="card-link">OPEN LINK   &rarr;</a>
+                    <a href="https://github.com/ewasion137/winfortune" target="_blank" class="card-link">View Repository &rarr;</a>
                 </article>
             </div>
         </section>
 
         <!-- Hardware Workstation -->
-        <section id="specs" class="section kinetic-float-1">
-            <h2 class="section-title"><span class="accent">&gt;</span> Hardware</h2>
-            <div class="node-card specs-card">
+        <section id="specs" class="section">
+            <h2 class="section-title">Hardware Specifications</h2>
+            <div class="card specs-card">
                 <div class="specs-grid">
                     <div class="spec-unit">
-                        <span class="unit-label">// PROCESSOR</span>
+                        <span class="unit-label">PROCESSOR</span>
                         <span class="unit-val">AMD Ryzen 5 3600</span>
                     </div>
                     <div class="spec-unit">
-                        <span class="unit-label">// GRAPHICS</span>
+                        <span class="unit-label">GRAPHICS</span>
                         <span class="unit-val">NVIDIA RTX 3050 (16GB)</span>
                     </div>
                     <div class="spec-unit">
-                        <span class="unit-label">// MEMORY</span>
+                        <span class="unit-label">MEMORY</span>
                         <span class="unit-val">16GB DDR4</span>
                     </div>
                     <div class="spec-unit">
-                        <span class="unit-label">// DRIVE</span>
-                        <span class="unit-val">1TB SSD</span>
+                        <span class="unit-label">STORAGE</span>
+                        <span class="unit-val">1TB NVMe SSD</span>
                     </div>
                     <div class="spec-unit">
-                        <span class="unit-label">// HOST OS</span>
+                        <span class="unit-label">HOST OS</span>
                         <span class="unit-val">Windows 11 LTSC IoT Enterprise</span>
                     </div>
                 </div>
@@ -261,10 +226,10 @@
 
     <footer class="footer">
         <div class="container footer-flex">
-            <span class="footer-text">ewasion137</span>
+            <span class="footer-text">&copy; ewasion137</span>
             <div class="footer-urls">
                 <a href="https://github.com/ewasion137" target="_blank">github</a>
-                <a href="https://github.com/Equinox-Collective" target="_blank">equinox-collective</a>
+                <a href="https://github.com/Equinox-Collective" target="_blank">organization</a>
                 <a href="https://ko-fi.com/ewasion" target="_blank">ko-fi</a>
             </div>
         </div>

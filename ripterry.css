@@ -1,0 +1,449 @@
+/* ==========================================================================
+   STYLE 3: THEY GLOW YOU SHINE (TempleOS V4.05 Authentic VGA Palette & 8x8 Font)
+   ========================================================================== */
+
+/* Authentic TempleOS 8x8 Bitmap Font import */
+@font-face {
+    font-family: 'TempleOSFont';
+    src: url('https://raw.githubusercontent.com/rendello/templeos_font/main/templeos_font.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+}
+
+:root {
+    /* 16-Color VGA TempleOS Palette */
+    --tos-white: #ffffff;
+    --tos-black: #000000;
+    --tos-blue: #0000aa;
+    --tos-light-blue: #5555ff;
+    --tos-cyan: #55ffff;
+    --tos-red: #aa0000;
+    --tos-bright-red: #ff5555;
+    --tos-purple: #880088;
+    --tos-yellow: #ffff55;
+    --tos-green: #00aa00;
+    --tos-bright-green: #55ff55;
+    
+    --font-8x8: 'TempleOSFont', 'Px437 IBM VGA 8x8', 'Courier New', monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border-radius: 0px !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    transition: none !important;
+    
+    /* Force pixelated non-antialiased 8x8 font rendering */
+    -webkit-font-smoothing: none !important;
+    -moz-osx-font-smoothing: unset !important;
+    font-smooth: never !important;
+    image-rendering: pixelated;
+}
+
+body {
+    background-color: var(--tos-white);
+    color: var(--tos-blue);
+    font-family: var(--font-8x8);
+    font-size: 16px;
+    line-height: 1.2;
+    letter-spacing: 0px;
+}
+
+.container {
+    width: 98%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 10px 0;
+}
+
+/* Header & Navbar (TempleOS Menu Bar Style) */
+.site-header {
+    background: var(--tos-white);
+    border-bottom: 2px solid var(--tos-blue);
+    padding: 4px 0;
+}
+
+.navbar {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-family: var(--font-8x8);
+}
+
+.brand {
+    font-weight: bold;
+    color: var(--tos-purple);
+}
+
+.brand::before {
+    content: "MENU==..";
+    color: var(--tos-blue);
+}
+
+.status-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: var(--tos-red);
+}
+
+.nav-links {
+    display: flex;
+    gap: 16px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--tos-red);
+    text-decoration: underline;
+}
+
+.nav-links a:hover {
+    background: var(--tos-blue);
+    color: var(--tos-white);
+    text-decoration: none;
+}
+
+/* Theme Switcher Controls */
+.theme-switcher {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.theme-label { 
+    color: var(--tos-purple); 
+}
+
+.theme-btn {
+    background: var(--tos-white);
+    border: 1px solid var(--tos-blue);
+    color: var(--tos-blue);
+    padding: 2px 6px;
+    font-family: var(--font-8x8);
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.theme-btn.active {
+    background: var(--tos-blue);
+    color: var(--tos-yellow);
+    font-weight: bold;
+}
+
+/* Hero Section */
+.hero-section {
+    padding: 20px 0 16px;
+    border-bottom: 1px dashed var(--tos-blue);
+}
+
+.badge {
+    display: inline-block;
+    color: var(--tos-purple);
+    border: 1px solid var(--tos-blue);
+    background: var(--tos-white);
+    padding: 2px 6px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.hero-title {
+    font-size: 1.4rem;
+    color: var(--tos-purple);
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.hero-desc {
+    color: var(--tos-blue);
+    margin-bottom: 16px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    font-family: var(--font-8x8);
+    font-size: 0.9rem;
+    padding: 4px 10px;
+    text-decoration: none;
+    border: 1px solid var(--tos-blue);
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: var(--tos-blue);
+    color: var(--tos-white);
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background: var(--tos-black);
+    color: var(--tos-white);
+}
+
+.btn-secondary {
+    background: var(--tos-white);
+    color: var(--tos-red);
+    border-color: var(--tos-red);
+    text-decoration: underline;
+}
+
+.btn-secondary:hover {
+    background: var(--tos-red);
+    color: var(--tos-white);
+}
+
+.btn-accent {
+    background: var(--tos-white);
+    color: var(--tos-purple);
+    border-color: var(--tos-purple);
+}
+
+/* Cards & Layout */
+.section { 
+    margin-top: 24px; 
+}
+
+.section-title {
+    font-size: 1.1rem;
+    color: var(--tos-purple);
+    margin-bottom: 12px;
+    border-bottom: 2px solid var(--tos-blue);
+    padding-bottom: 2px;
+    font-weight: bold;
+}
+
+.section-title::before {
+    content: "> ";
+    color: var(--tos-red);
+}
+
+.grid { 
+    display: grid; 
+    gap: 12px; 
+}
+
+.grid-2 { 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+}
+
+.card {
+    background: var(--tos-white);
+    border: 1px solid var(--tos-blue);
+    padding: 12px;
+}
+
+.card h3 {
+    color: var(--tos-red);
+    margin-bottom: 6px;
+    text-decoration: underline;
+}
+
+.card p {
+    color: var(--tos-blue);
+}
+
+.stack-card { 
+    margin-top: 12px; 
+}
+
+.stack-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.tag {
+    font-size: 0.85rem;
+    padding: 1px 6px;
+    background: var(--tos-white);
+    border: 1px solid var(--tos-blue);
+    color: var(--tos-blue);
+}
+
+.tag-core {
+    border-color: var(--tos-red);
+    color: var(--tos-red);
+    font-weight: bold;
+}
+
+/* Projects Grid */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.filter-group { 
+    display: flex; 
+    gap: 4px; 
+}
+
+.filter-btn {
+    background: var(--tos-white);
+    border: 1px solid var(--tos-blue);
+    color: var(--tos-blue);
+    padding: 2px 6px;
+    font-family: var(--font-8x8);
+    cursor: pointer;
+}
+
+.filter-btn.active {
+    background: var(--tos-black);
+    color: var(--tos-white);
+    font-weight: bold;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 10px;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    margin-bottom: 6px;
+}
+
+.meta-type { color: var(--tos-purple); }
+.status-active { color: var(--tos-green); font-weight: bold; }
+.status-paused { color: var(--tos-red); }
+.status-done { color: var(--tos-blue); }
+.status-archived { color: var(--tos-black); }
+
+.project-title { 
+    color: var(--tos-red); 
+    margin-bottom: 4px; 
+    text-decoration: underline;
+}
+
+.project-desc { 
+    margin-bottom: 10px; 
+    font-size: 0.85rem; 
+}
+
+.project-tags {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    font-size: 0.75rem;
+}
+
+.project-tags span {
+    background: var(--tos-white);
+    border: 1px solid var(--tos-blue);
+    padding: 0px 4px;
+    color: var(--tos-blue);
+}
+
+.card-link {
+    color: var(--tos-red);
+    text-decoration: underline;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.card-link:hover {
+    background: var(--tos-blue);
+    color: var(--tos-white);
+    text-decoration: none;
+}
+
+/* Specs & Bottom Debugger Window Style (TempleOS Lower Split Pane) */
+#specs {
+    background: var(--tos-blue);
+    color: var(--tos-white);
+    padding: 16px;
+    border: 2px solid var(--tos-light-blue);
+    margin-top: 40px;
+}
+
+#specs .section-title {
+    color: var(--tos-yellow);
+    border-bottom: 1px solid var(--tos-cyan);
+}
+
+#specs .card {
+    background: var(--tos-blue);
+    border: 1px solid var(--tos-cyan);
+    color: var(--tos-white);
+}
+
+.specs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+}
+
+.spec-unit { 
+    display: flex; 
+    flex-direction: column; 
+}
+
+.unit-label { 
+    font-size: 0.75rem; 
+    color: var(--tos-cyan); 
+}
+
+.unit-val { 
+    font-size: 0.9rem; 
+    color: var(--tos-white); 
+    font-weight: bold;
+}
+
+/* Footer Terminal Line */
+.footer {
+    background: var(--tos-blue);
+    color: var(--tos-bright-green);
+    border-top: 2px double var(--tos-white);
+    padding: 12px 0;
+    font-family: var(--font-8x8);
+}
+
+.footer-flex {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.footer-text::before {
+    content: "KernelMain+0x02B7 ";
+    color: var(--tos-cyan);
+}
+
+.footer-urls a {
+    color: var(--tos-yellow);
+    margin-left: 8px;
+    text-decoration: underline;
+}
+
+.footer-urls a:hover {
+    background: var(--tos-yellow);
+    color: var(--tos-black);
+    text-decoration: none;
+}
