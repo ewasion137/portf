@@ -3,292 +3,276 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ewasion137 | Systems & Low-Level Developer</title>
+    <title>ewasion137 | Systems & Kernel Architect</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Fonts: Inter & JetBrains Mono for code aesthetic -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;0,800;1,400&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Background Ambient Aura FX -->
-    <div class="ambient-background">
-        <div class="aura-blob aura-1"></div>
-        <div class="aura-blob aura-2"></div>
-        <div class="aura-blob aura-3"></div>
-    </div>
+    <!-- Low-Level Hex Stream Canvas Background -->
+    <canvas id="kernel-canvas"></canvas>
 
-    <!-- Navigation Bar -->
-    <nav class="navbar glass-panel">
+    <!-- Floating Top Navigation -->
+    <nav class="navbar kinetic-float-fast">
         <div class="nav-brand">
-            <span class="brand-prefix">&gt;_</span> ewasion137
+            <span class="pulse-dot"></span>
+            <span class="brand-text">ewasion137@kernel:~#</span>
         </div>
         <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#specs">Specs</a></li>
-            <li><a href="#contact">Links</a></li>
+            <li><a href="#about" class="kinetic-link">/about</a></li>
+            <li><a href="#projects" class="kinetic-link">/projects</a></li>
+            <li><a href="#specs" class="kinetic-link">/specs</a></li>
         </ul>
     </nav>
 
-    <!-- Main Container -->
     <main class="container">
         <!-- Hero Section -->
-        <section class="hero-section glass-panel">
-            <div class="hero-content">
-                <div class="badge">Systems, Web & Low-Level Engineer</div>
-                <h1 class="hero-title">Crafting OS Kernels, Low-Level Tools & Desktop Software</h1>
-                <p class="hero-subtitle">
-                    Passionate software architect specializing in C/C++, assembly, OS development, desktop window management, and custom web applications.
-                </p>
-                <div class="hero-actions">
-                    <a href="https://github.com/ewasion137" target="_blank" class="btn btn-primary">
-                        <svg class="icon" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                        GitHub Profile
-                    </a>
-                    <a href="https://github.com/Equinox-Collective" target="_blank" class="btn btn-secondary">
-                        Equinox Collective
-                    </a>
-                    <a href="https://ko-fi.com/ewasion" target="_blank" class="btn btn-kofi">
-                        Support on Ko-fi
-                    </a>
-                </div>
+        <section class="hero-section kinetic-float-1">
+            <div class="hero-badge kinetic-float-2">
+                <span class="code-symbol">[x86_64]</span> Bare-Metal, Systems & Web Engineering
+            </div>
+            <h1 class="hero-title kinetic-float-3">
+                Building OS Kernels, Tiling WMs & Native Tooling
+            </h1>
+            <p class="hero-subtitle kinetic-float-2">
+                Software developer exploring monolithic operating systems, low-level execution environments, custom desktop utilities, and experimental audio apps.
+            </p>
+            <div class="hero-actions">
+                <a href="https://github.com/ewasion137" target="_blank" class="btn btn-primary kinetic-float-slow">
+                    GitHub Profile
+                </a>
+                <a href="https://github.com/Equinox-Collective" target="_blank" class="btn btn-secondary kinetic-float-fast">
+                    Equinox Collective
+                </a>
+                <a href="https://ko-fi.com/ewasion" target="_blank" class="btn btn-kofi kinetic-float-3">
+                    Support via Ko-fi
+                </a>
             </div>
         </section>
 
         <!-- About Me Section -->
         <section id="about" class="section">
-            <h2 class="section-title"><span class="accent">//</span> About Me</h2>
+            <h2 class="section-title kinetic-float-slow"><span class="accent">&gt;</span> System_Info</h2>
+            
             <div class="about-grid">
-                <div class="glass-card about-card">
-                    <h3>Developer Journey</h3>
+                <div class="node-card kinetic-float-1" data-tilt>
+                    <div class="card-corner corner-tl"></div>
+                    <div class="card-corner corner-br"></div>
+                    <h3>Background</h3>
                     <p>
-                        Started in Game Development, then transitioned into Web Apps, System Utilities, and full OSDev. Experienced in reverse-engineering concepts, OS architecture, and desktop automation.
+                        Evolved from GameDev into Web Applications, Systems Programming, and bare-metal OS Architecture. Hands-on experience with reverse-engineering concepts and low-level development tooling.
                     </p>
                 </div>
-                <div class="glass-card about-card">
-                    <h3>Technical Domain</h3>
+                
+                <div class="node-card kinetic-float-3" data-tilt>
+                    <div class="card-corner corner-tl"></div>
+                    <div class="card-corner corner-br"></div>
+                    <h3>Domain & Interests</h3>
                     <p>
-                        Focused on high-performance C/C++ code, bare-metal low-level programming (x86_64, Limine, Assembly), and GUI tooling. Also active in music production.
+                        High-performance C/C++ code, custom GUI window managers, hardware driver abstraction, and electronic music production.
                     </p>
                 </div>
             </div>
 
-            <!-- Tech Stack Badges -->
-            <div class="glass-card stack-card">
-                <h3>Primary Technologies</h3>
+            <!-- Stack Container -->
+            <div class="node-card stack-card kinetic-float-2">
+                <h3>Primary Stack & Toolset</h3>
                 <div class="stack-tags">
-                    <span class="tag tag-highlight">C / C++</span>
-                    <span class="tag tag-highlight">x86_64 ASM</span>
-                    <span class="tag">C# (.NET)</span>
-                    <span class="tag">Lua</span>
-                    <span class="tag">JavaScript / HTML / CSS</span>
-                    <span class="tag">TypeScript</span>
-                    <span class="tag">Qt 6</span>
-                    <span class="tag">Electron</span>
-                    <span class="tag">Rust</span>
-                    <span class="tag">Python</span>
+                    <span class="tag tag-core kinetic-float-fast">C / C++</span>
+                    <span class="tag tag-core kinetic-float-3">x86_64 ASM</span>
+                    <span class="tag kinetic-float-slow">C# (.NET)</span>
+                    <span class="tag kinetic-float-1">Lua</span>
+                    <span class="tag kinetic-float-2">Web (JS/CSS/HTML)</span>
+                    <span class="tag kinetic-float-fast">TypeScript</span>
+                    <span class="tag kinetic-float-3">Qt 6</span>
+                    <span class="tag kinetic-float-slow">Electron</span>
+                    <span class="tag kinetic-float-1">Rust</span>
+                    <span class="tag kinetic-float-2">Python</span>
                 </div>
             </div>
         </section>
 
-        <!-- Projects Section -->
+        <!-- Projects Grid -->
         <section id="projects" class="section">
-            <div class="section-header">
-                <h2 class="section-title"><span class="accent">//</span> Featured Projects</h2>
-                <div class="project-filters">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="osdev">OSDev & Low-Level</button>
-                    <button class="filter-btn" data-filter="desktop">Desktop Tools</button>
-                    <button class="filter-btn" data-filter="web">Web & Apps</button>
+            <div class="section-header kinetic-float-2">
+                <h2 class="section-title"><span class="accent">&gt;</span> Active_Modules</h2>
+                <div class="filter-group">
+                    <button class="filter-btn active" data-filter="all">ALL</button>
+                    <button class="filter-btn" data-filter="osdev">SYS/OS</button>
+                    <button class="filter-btn" data-filter="desktop">DESKTOP</button>
+                    <button class="filter-btn" data-filter="web">WEB/AUDIO</button>
                 </div>
             </div>
 
             <div class="projects-grid">
                 <!-- Project 1: EquinoxOS -->
-                <article class="glass-card project-card" data-category="osdev">
-                    <div class="project-header">
-                        <span class="project-type">Operating System</span>
-                        <span class="project-status status-active">Active Core</span>
+                <article class="node-card project-card kinetic-float-1" data-category="osdev" data-tilt>
+                    <div class="card-meta">
+                        <span class="meta-type">OPERATING SYSTEM</span>
+                        <span class="status-indicator status-green">ACTIVE_KERNEL</span>
                     </div>
                     <h3 class="project-title">EquinoxOS / EquantOS</h3>
                     <p class="project-desc">
-                        A monolithic x86_64 hobby operating system written from scratch in C & ASM. Boots via Limine in Higher-Half 64-bit mode. Features a compositing window manager with drop shadows, Ring 3 isolation, preemptive multitasking, FAT32/EXT2 VFS, TCP/IP networking, AC97 audio, and a DOOM port.
+                        A monolithic x86_64 operating system built from scratch in C & ASM. Boots via Limine in Higher-Half mode. Implements a window manager with shadows, Ring 3 isolation, preemptive scheduler, FAT32/EXT2 VFS, TCP/IP networking, AC97 audio, and DOOM.
                     </p>
                     <div class="project-tags">
-                        <span>C</span><span>ASM</span><span>Limine</span><span>x86_64</span><span>GUI</span>
+                        <span>C</span><span>ASM</span><span>Limine</span><span>x86_64</span><span>Ring3</span>
                     </div>
-                    <div class="project-links">
-                        <a href="https://github.com/Equinox-Collective/EquinoxOS" target="_blank" class="link-btn">Source Code &rarr;</a>
-                    </div>
+                    <a href="https://github.com/Equinox-Collective/EquinoxOS" target="_blank" class="card-link">EXECUTE_LINK &rarr;</a>
                 </article>
 
                 <!-- Project 2: Cremniy -->
-                <article class="glass-card project-card" data-category="osdev desktop">
-                    <div class="project-header">
-                        <span class="project-type">Contributor / Contributed</span>
-                        <span class="project-status status-stable">v0.2.4</span>
+                <article class="node-card project-card kinetic-float-3" data-category="osdev desktop" data-tilt>
+                    <div class="card-meta">
+                        <span class="meta-type">IDE / CONTRIBUTOR</span>
+                        <span class="status-indicator status-blue">v0.2.4</span>
                     </div>
-                    <h3 class="project-title">Cremniy IDE</h3>
+                    <h3 class="project-title">Cremniy</h3>
                     <p class="project-desc">
-                        Integrated environment for low-level development, reverse engineering, and embedded systems. Combines a HEX editor, disassembler, and binary analysis engine into a unified C++/Qt workspace.
+                        All-in-one low-level development environment. Integrates a HEX editor, disassembler, and binary analysis framework into a high-speed unified C++/Qt workspace.
                     </p>
                     <div class="project-tags">
-                        <span>C++17</span><span>Qt 6</span><span>CMake</span><span>Low-Level</span>
+                        <span>C++17</span><span>Qt 6</span><span>CMake</span><span>Binary Analysis</span>
                     </div>
-                    <div class="project-links">
-                        <a href="https://github.com/igmunv/cremniy" target="_blank" class="link-btn">Source Code &rarr;</a>
-                    </div>
+                    <a href="https://github.com/igmunv/cremniy" target="_blank" class="card-link">EXECUTE_LINK &rarr;</a>
                 </article>
 
                 <!-- Project 3: HyprWin -->
-                <article class="glass-card project-card" data-category="desktop">
-                    <div class="project-header">
-                        <span class="project-type">Windows Utility</span>
-                        <span class="project-status status-active">Maintained</span>
+                <article class="node-card project-card kinetic-float-2" data-category="desktop" data-tilt>
+                    <div class="card-meta">
+                        <span class="meta-type">TILING WM</span>
+                        <span class="status-indicator status-green">MAINTAINED</span>
                     </div>
                     <h3 class="project-title">HyprWin</h3>
                     <p class="project-desc">
-                        A tiling window manager for Windows inspired by Hyprland. Provides smooth window arrangement, dynamic tiling layouts, and Lua-based scriptable configuration.
+                        Windows tiling window manager inspired by Hyprland. Provides automatic window organization, custom layouts, and Lua configuration scripting.
                     </p>
                     <div class="project-tags">
-                        <span>Lua</span><span>C++</span><span>Win32 API</span><span>Tiling WM</span>
+                        <span>Lua</span><span>C++</span><span>Win32 API</span>
                     </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ewasion137/HyprWin" target="_blank" class="link-btn">Source Code &rarr;</a>
-                    </div>
+                    <a href="https://github.com/ewasion137/HyprWin" target="_blank" class="card-link">EXECUTE_LINK &rarr;</a>
                 </article>
 
                 <!-- Project 4: wgiext -->
-                <article class="glass-card project-card" data-category="osdev">
-                    <div class="project-header">
-                        <span class="project-type">Disk Tool</span>
-                        <span class="project-status status-stable">Tooling</span>
+                <article class="node-card project-card kinetic-float-slow" data-category="osdev" data-tilt>
+                    <div class="card-meta">
+                        <span class="meta-type">FS TOOLING</span>
+                        <span class="status-indicator status-blue">STABLE</span>
                     </div>
                     <h3 class="project-title">wgiext</h3>
                     <p class="project-desc">
-                        Lightweight C utility designed to construct and generate EXT2, EXT3, and EXT4 filesystem disk images natively under Windows environment for OS testing and emulator drives.
+                        Native C tool for generating EXT2/EXT3/EXT4 filesystem raw disk images under Windows for OS testing and emulator drives.
                     </p>
                     <div class="project-tags">
-                        <span>C</span><span>Filesystems</span><span>EXT2/3/4</span><span>CLI</span>
+                        <span>C</span><span>EXT2/3/4</span><span>Win32</span>
                     </div>
-                    <div class="project-links">
-                        <a href="https://github.com/Equinox-Collective/wgiext" target="_blank" class="link-btn">Source Code &rarr;</a>
-                    </div>
+                    <a href="https://github.com/Equinox-Collective/wgiext" target="_blank" class="card-link">EXECUTE_LINK &rarr;</a>
                 </article>
 
                 <!-- Project 5: ZenithPlayer -->
-                <article class="glass-card project-card" data-category="desktop web">
-                    <div class="project-header">
-                        <span class="project-type">Audio Application</span>
-                        <span class="project-status status-stable">Completed</span>
+                <article class="node-card project-card kinetic-float-1" data-category="web desktop" data-tilt>
+                    <div class="card-meta">
+                        <span class="meta-type">AUDIO APP</span>
+                        <span class="status-indicator status-blue">FINISHED</span>
                     </div>
                     <h3 class="project-title">ZenithPlayer</h3>
                     <p class="project-desc">
-                        Minimalist desktop music player built for local audio files with custom UI themes, playlist management, and low audio latency output.
+                        Custom desktop audio player built on Electron for local drives with minimalist styling and dynamic playlist rendering.
                     </p>
                     <div class="project-tags">
-                        <span>Electron</span><span>JavaScript</span><span>CSS3</span><span>Audio API</span>
+                        <span>Electron</span><span>JavaScript</span><span>AudioAPI</span>
                     </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ewasion137/ZenithPlayer" target="_blank" class="link-btn">Source Code &rarr;</a>
-                    </div>
+                    <a href="https://github.com/ewasion137/ZenithPlayer" target="_blank" class="card-link">EXECUTE_LINK &rarr;</a>
                 </article>
 
                 <!-- Project 6: winfortune -->
-                <article class="glass-card project-card" data-category="desktop">
-                    <div class="project-header">
-                        <span class="project-type">Port / Utility</span>
-                        <span class="project-status status-archived">Archived</span>
+                <article class="node-card project-card kinetic-float-3" data-category="desktop" data-tilt>
+                    <div class="card-meta">
+                        <span class="meta-type">CLI PORT</span>
+                        <span class="status-indicator status-red">ARCHIVED</span>
                     </div>
                     <h3 class="project-title">winfortune</h3>
                     <p class="project-desc">
-                        Native C port of classic BSD <code class="inline-code">fortune</code> command for Windows CMD and PowerShell environments.
+                        Lightweight C port of the legendary BSD <code class="code-inline">fortune</code> command for Windows command line interfaces.
                     </p>
                     <div class="project-tags">
                         <span>C</span><span>Win32</span><span>CLI</span>
                     </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ewasion137/winfortune" target="_blank" class="link-btn">Source Code &rarr;</a>
-                    </div>
+                    <a href="https://github.com/ewasion137/winfortune" target="_blank" class="card-link">EXECUTE_LINK &rarr;</a>
                 </article>
 
                 <!-- Project 7: y2mmod -->
-                <article class="glass-card project-card" data-category="web desktop">
-                    <div class="project-header">
-                        <span class="project-type">Client App</span>
-                        <span class="project-status status-active">Updated</span>
+                <article class="node-card project-card kinetic-float-fast" data-category="web desktop" data-tilt>
+                    <div class="card-meta">
+                        <span class="meta-type">MODDED CLIENT</span>
+                        <span class="status-indicator status-green">UPDATED</span>
                     </div>
                     <h3 class="project-title">y2mmod</h3>
                     <p class="project-desc">
-                        Modded client for YouTube Music supporting audio tracks downloading, speed modifications, and built-in local equalizer adjustments.
+                        YouTube Music desktop client featuring local audio downloading, playback speed controls, and a custom equalizer.
                     </p>
                     <div class="project-tags">
-                        <span>TypeScript</span><span>Electron</span><span>Web Audio</span>
+                        <span>TypeScript</span><span>Electron</span><span>WebAudio</span>
                     </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ewasion137/y2mmod" target="_blank" class="link-btn">Source Code &rarr;</a>
-                    </div>
+                    <a href="https://github.com/ewasion137/y2mmod" target="_blank" class="card-link">EXECUTE_LINK &rarr;</a>
                 </article>
 
                 <!-- Project 8: AmbientSP -->
-                <article class="glass-card project-card" data-category="web desktop">
-                    <div class="project-header">
-                        <span class="project-type">Audio Tool</span>
-                        <span class="project-status status-stable">Completed</span>
+                <article class="node-card project-card kinetic-float-2" data-category="web desktop" data-tilt>
+                    <div class="card-meta">
+                        <span class="meta-type">BACKGROUND AUDIO</span>
+                        <span class="status-indicator status-blue">FREE</span>
                     </div>
                     <h3 class="project-title">AmbientSP</h3>
                     <p class="project-desc">
-                        Free ambient background sound player designed for focus and productivity sessions with customizable soundscapes.
+                        Free ambient noise soundscape engine for productivity sessions built with Web Audio technologies.
                     </p>
                     <div class="project-tags">
-                        <span>JavaScript</span><span>Electron</span><span>HTML5</span>
+                        <span>JavaScript</span><span>Electron</span><span>CSS3</span>
                     </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ewasion137/AmbientSP" target="_blank" class="link-btn">Source Code &rarr;</a>
-                    </div>
+                    <a href="https://github.com/ewasion137/AmbientSP" target="_blank" class="card-link">EXECUTE_LINK &rarr;</a>
                 </article>
             </div>
         </section>
 
-        <!-- Workstation Specs Section -->
-        <section id="specs" class="section">
-            <h2 class="section-title"><span class="accent">//</span> Workstation Specs</h2>
-            <div class="glass-card specs-card">
+        <!-- Hardware Workstation -->
+        <section id="specs" class="section kinetic-float-1">
+            <h2 class="section-title"><span class="accent">&gt;</span> Hardware_Host</h2>
+            <div class="node-card specs-card">
                 <div class="specs-grid">
-                    <div class="spec-item">
-                        <span class="spec-label">CPU:</span>
-                        <span class="spec-value">AMD Ryzen 5 3600</span>
+                    <div class="spec-unit">
+                        <span class="unit-label">// PROCESSOR</span>
+                        <span class="unit-val">AMD Ryzen 5 3600</span>
                     </div>
-                    <div class="spec-item">
-                        <span class="spec-label">GPU:</span>
-                        <span class="spec-value">NVIDIA GeForce RTX 3050 (16GB)</span>
+                    <div class="spec-unit">
+                        <span class="unit-label">// GRAPHICS</span>
+                        <span class="unit-val">NVIDIA RTX 3050 (16GB)</span>
                     </div>
-                    <div class="spec-item">
-                        <span class="spec-label">RAM:</span>
-                        <span class="spec-value">16GB DDR4</span>
+                    <div class="spec-unit">
+                        <span class="unit-label">// MEMORY</span>
+                        <span class="unit-val">16GB DDR4</span>
                     </div>
-                    <div class="spec-item">
-                        <span class="spec-label">Storage:</span>
-                        <span class="spec-value">1TB High-Speed SSD</span>
+                    <div class="spec-unit">
+                        <span class="unit-label">// DRIVE</span>
+                        <span class="unit-val">1TB High-Speed SSD</span>
                     </div>
-                    <div class="spec-item">
-                        <span class="spec-label">Main OS:</span>
-                        <span class="spec-value">Windows 11 LTSC IoT Enterprise</span>
+                    <div class="spec-unit">
+                        <span class="unit-label">// HOST OS</span>
+                        <span class="unit-val">Windows 11 LTSC IoT Enterprise</span>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer id="contact" class="footer glass-panel">
-        <div class="container footer-content">
-            <p>&copy; ewasion137. Built with modern CSS Glassmorphism & Vanilla JS.</p>
-            <div class="footer-links">
-                <a href="https://github.com/ewasion137" target="_blank">GitHub</a>
-                <a href="https://github.com/Equinox-Collective" target="_blank">Equinox Collective</a>
-                <a href="https://ko-fi.com/ewasion" target="_blank">Ko-fi</a>
+    <footer class="footer">
+        <div class="container footer-flex">
+            <span class="footer-text">ewasion137 &copy; Kinetic Low-Level Architecture</span>
+            <div class="footer-urls">
+                <a href="https://github.com/ewasion137" target="_blank">github</a>
+                <a href="https://github.com/Equinox-Collective" target="_blank">equinox-collective</a>
+                <a href="https://ko-fi.com/ewasion" target="_blank">ko-fi</a>
             </div>
         </div>
     </footer>
