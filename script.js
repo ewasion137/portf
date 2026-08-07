@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const hexTokens = [
-        '0x7F', '0x00', 'EAX', 'CR0', 'RING3', 'MOV', 'NOP', '0xDEADBEEF',
-        'EXT2', 'FAT32', 'LIMINE', 'C++', 'ASM', '0x80', 'KERNEL', 'VFS'
+        'Games!', 'KERNEL PANIC', 'I`d like to interject for a moment...', 'hi', 'OSDEV', 'GAMEDEV', 'APPDEV', 'WEBDEV',
+        'JS/HTML/CSS', 'Python', 'C', 'C++', 'ASM', 'gd is peak', 'i use windows btw', 'BOO'
     ];
 
     // Floating Particles
