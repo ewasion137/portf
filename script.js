@@ -330,7 +330,7 @@ const THEMES = {
         css: 'KOCMOC.css',
         bgMat: bgMaterialKocmoc,
         textMat: textMaterialKocmoc,
-        physics: { stiffness: 0.12, damping: 0.72, force: 0.45 }
+        physics: { stiffness: 0.3, damping: 0.40, force: 0.7, radius: 5.5, maxDisp: 3.2 }
     }
 };
 
