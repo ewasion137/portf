@@ -1,3 +1,5 @@
+/* --- MELANCHOLIC 80s POST-PUNK / THE SMITHS AESTHETIC --- */
+
 * {
     margin: 0;
     padding: 0;
@@ -6,14 +8,16 @@
 
 html, body {
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     overflow-x: hidden;
-    background-color: #05000a;
-    color: #ffffff;
-    font-family: 'Space Grotesk', sans-serif;
+    background-color: #0d0e11; /* Rainy Manchester Midnight */
+    color: #d1cbd1;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* Fixed Fullscreen 3D Scene Canvas */
+/* 3D Canvas Background */
 #liquid-canvas {
     position: fixed;
     top: 0;
@@ -21,25 +25,29 @@ html, body {
     width: 100vw;
     height: 100vh;
     z-index: 0;
-    pointer-events: auto; /* Enable mouse interaction on the 3D scene */
+    pointer-events: auto;
+    filter: contrast(95%) brightness(90%); /* Subtle vintage film haze */
 }
 
-/* Main Content Overlay */
+/* UI Overlay Container */
 .ui-container {
     position: relative;
     z-index: 1;
-    pointer-events: none; /* Let clicks pass through empty spaces to 3D Canvas */
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    pointer-events: none;
 }
 
 .ui-container a, 
-.ui-container .card {
-    pointer-events: auto; /* Re-enable clicks on interactive UI elements */
+.ui-container .card,
+.ui-container .navbar {
+    pointer-events: auto;
 }
 
-/* Screen 1: Empty Hero Screen for Jelly Text */
+/* Hero Screen */
 .hero-screen {
     height: 100vh;
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -51,100 +59,399 @@ html, body {
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
-    font-size: 0.8rem;
-    letter-spacing: 3px;
-    color: rgba(255, 255, 255, 0.6);
-    animation: bounce 2s infinite;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: rgba(209, 203, 209, 0.4);
+    font-style: italic;
+    animation: fadePulse 3s ease-in-out infinite;
 }
 
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-10px); }
-    60% { transform: translateY(-5px); }
+@keyframes fadePulse {
+    0%, 100% { opacity: 0.3; transform: translateY(0); }
+    50% { opacity: 0.7; transform: translateY(4px); }
 }
 
-/* Screen 2: Content Section */
-.content-section {
-    min-height: 100vh;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 6rem 2rem 4rem 2rem;
+/* Sticky Header & Navbar */
+.site-header {
+    position: sticky;
+    top: 1.5rem;
+    z-index: 10;
+    margin-bottom: 5rem;
 }
 
-.section-header {
-    margin-bottom: 3rem;
+.navbar.glass {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.9rem 1.5rem;
+    background: rgba(18, 20, 24, 0.65);
+    border: 1px solid rgba(209, 203, 209, 0.12);
+    backdrop-filter: blur(12px);
+    border-radius: 4px; /* Slightly squarer retro aesthetic */
 }
 
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'Courier Prime', monospace;
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: #c0b8be;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    background: #8fa3ad; /* Rainy slate blue indicator */
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(143, 163, 173, 0.5);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: rgba(209, 203, 209, 0.55);
+    text-decoration: none;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.85rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #d1b8c4; /* Pale faded dusty pink */
+}
+
+/* Typography & Hero Titles */
 .badge {
     display: inline-block;
-    padding: 6px 16px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    margin-bottom: 1rem;
+    padding: 4px 12px;
+    background: rgba(209, 203, 209, 0.04);
+    border: 1px solid rgba(209, 203, 209, 0.15);
+    border-radius: 2px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.75rem;
+    color: #a89aa5;
+    margin-bottom: 1.5rem;
+    font-style: italic;
 }
 
-.section-header h2 {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(2rem, 5vw, 4rem);
-    font-weight: 800;
-    background: linear-gradient(135deg, #ffffff 30%, #ff8800, #e000ff);
+.hero-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(2.5rem, 5vw, 4.2rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #e0dadf 30%, #a3929e 70%, #72838c 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 1rem;
 }
 
-.section-header p {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 1.1rem;
+.hero-desc {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: rgba(209, 203, 209, 0.65);
     max-width: 600px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
 }
 
-/* Glassmorphism Cards Grid */
-.cards-grid {
+.hero-actions {
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    margin-bottom: 5rem;
+}
+
+/* Muted Retro Buttons */
+.btn {
+    padding: 10px 20px;
+    border-radius: 2px;
+    text-decoration: none;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: #c5bcc3;
+    color: #121418;
+}
+
+.btn-primary:hover {
+    background: #a89aa5;
+    color: #0d0e11;
+    box-shadow: 0 0 15px rgba(168, 154, 165, 0.2);
+}
+
+.btn-secondary {
+    background: rgba(209, 203, 209, 0.05);
+    color: #c5bcc3;
+    border: 1px solid rgba(209, 203, 209, 0.2);
+}
+
+.btn-secondary:hover {
+    background: rgba(209, 203, 209, 0.12);
+    border-color: rgba(209, 203, 209, 0.35);
+}
+
+.btn-accent {
+    background: rgba(114, 131, 140, 0.12);
+    color: #9cb2bd;
+    border: 1px solid rgba(114, 131, 140, 0.25);
+}
+
+.btn-accent:hover {
+    background: rgba(114, 131, 140, 0.25);
+}
+
+/* Sections & Cards */
+.section {
+    padding: 4rem 0;
+}
+
+.section-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 2rem;
+    color: #dcd6dc;
+    border-bottom: 1px solid rgba(209, 203, 209, 0.1);
+    padding-bottom: 0.5rem;
+}
+
+.grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* Glass Cards with Vintage feel */
+.card.glass {
+    background: rgba(16, 18, 22, 0.55);
+    border: 1px solid rgba(209, 203, 209, 0.1);
+    backdrop-filter: blur(12px);
+    border-radius: 4px;
+    padding: 2rem;
+    transition: transform 0.4s ease, border-color 0.4s ease;
+}
+
+.card.glass:hover {
+    transform: translateY(-3px);
+    border-color: rgba(168, 154, 165, 0.3);
+}
+
+.card h3 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #e3ddf0;
+}
+
+.card p {
+    color: rgba(209, 203, 209, 0.6);
+    line-height: 1.6;
+    font-size: 1.05rem;
+}
+
+/* Tags */
+.stack-card {
+    margin-top: 1.5rem;
+}
+
+.stack-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.tag {
+    padding: 4px 10px;
+    background: rgba(209, 203, 209, 0.04);
+    border: 1px solid rgba(209, 203, 209, 0.12);
+    border-radius: 2px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.75rem;
+    color: rgba(209, 203, 209, 0.7);
+}
+
+.tag-core {
+    background: rgba(168, 154, 165, 0.1);
+    border-color: rgba(168, 154, 165, 0.3);
+    color: #d1b8c4;
+}
+
+/* Projects Grid */
+.projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 1.5rem;
 }
 
-.card.glass {
-    background: rgba(10, 5, 20, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(16px);
-    border-radius: 16px;
-    padding: 2rem;
-    transition: transform 0.3s ease, border-color 0.3s ease;
+.card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.75rem;
 }
 
-.card.glass:hover {
-    transform: translateY(-5px);
-    border-color: rgba(220, 0, 255, 0.5);
+.meta-type {
+    color: rgba(209, 203, 209, 0.4);
 }
 
-.card h3 {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.5rem;
+.status {
+    padding: 2px 6px;
+    border-radius: 2px;
+    font-size: 0.7rem;
+}
+
+/* Melancholic Status Badges */
+.status-active { background: rgba(143, 163, 173, 0.15); color: #9cb2bd; }
+.status-paused { background: rgba(168, 154, 165, 0.15); color: #d1b8c4; }
+.status-done { background: rgba(209, 203, 209, 0.1); color: #b0a8b0; }
+.status-archived { background: rgba(255, 255, 255, 0.03); color: #666; }
+
+.project-title {
+    font-size: 1.7rem;
     margin-bottom: 0.75rem;
 }
 
-.card p {
-    color: rgba(255, 255, 255, 0.7);
-    line-height: 1.5;
+.project-desc {
     margin-bottom: 1.5rem;
 }
 
-.tags {
+.project-tags {
     display: flex;
     gap: 0.5rem;
+    margin-bottom: 1.5rem;
 }
 
-.tags span {
+.project-tags span {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    background: rgba(209, 203, 209, 0.04);
+    border-radius: 2px;
+    color: rgba(209, 203, 209, 0.5);
+}
+
+.card-link {
+    display: inline-block;
+    color: #bfaab6;
+    text-decoration: none;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.8rem;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.card-link:hover {
+    transform: translateX(4px);
+    color: #e0dadf;
+}
+
+/* Specs Grid */
+.specs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.spec-unit {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.unit-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.7rem;
+    color: rgba(209, 203, 209, 0.4);
+    letter-spacing: 1px;
+}
+
+.unit-val {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.9rem;
+    color: #d1cbd1;
+}
+
+/* Footer */
+.footer {
+    padding: 4rem 0 2rem 0;
+    border-top: 1px solid rgba(209, 203, 209, 0.1);
+    margin-top: 5rem;
+}
+
+.footer-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.8rem;
+}
+
+.footer-text {
+    color: rgba(209, 203, 209, 0.4);
+    font-style: italic;
+}
+
+.footer-urls {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-urls a {
+    color: rgba(209, 203, 209, 0.6);
+    text-decoration: none;
+}
+
+.footer-urls a:hover {
+    color: #d1b8c4;
+}
+
+.theme-switcher {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Orbitron', sans-serif;
     font-size: 0.75rem;
+}
+
+.theme-btn {
     padding: 4px 10px;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0px;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: inherit;
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.theme-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+.theme-btn.active {
+    background: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+    font-weight: 700;
+    box-shadow: 0 0 10px #ffffff;
 }
