@@ -1,0 +1,271 @@
+/* ==========================================================================
+   GAMECUBE 3D ENGINE (cube.css)
+   Pure CSS 3D • Heavy Y-Axis Wobble • Iridescence • Skimmable Boot Intro
+   ========================================================================== */
+
+:root {
+    --cube-size: 380px;
+    --half-size: 190px;
+    
+    --gc-panel-bg: rgba(10, 13, 24, 0.9);
+    --gc-text: #e2e8f0;
+    --gc-text-dim: #8b9bb4;
+    --gc-cyan: #38bdf8;
+    --gc-green: #4ade80;
+    --gc-purple: #818cf8;
+}
+
+/* Сцена */
+.gc-viewport {
+    width: var(--cube-size);
+    height: var(--cube-size);
+    perspective: 1100px;
+    position: relative;
+    user-select: none;
+}
+
+/* ВНЕШНИЙ КОНТЕЙНЕР (Качается / Участвует в интро) */
+.cube-wobbler {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+/* 1. АНИМАЦИЯ ВСТУПЛЕНИЯ (Вылет из темноты) */
+.cube-wobbler.booting {
+    animation: gc-boot-sequence 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes gc-boot-sequence {
+    0% {
+        transform: translateZ(-900px) rotateX(360deg) rotateY(-720deg) scale(0.1);
+        opacity: 0;
+    }
+    30% {
+        opacity: 1;
+    }
+    80% {
+        transform: translateZ(30px) rotateX(-8deg) rotateY(18deg) scale(1.04);
+    }
+    100% {
+        transform: translateZ(0) rotateX(0deg) rotateY(0deg) scale(1);
+    }
+}
+
+/* ПОКАЧИВАНИЕ В ПРОСТОЕ: ВЕРТИКАЛЬНЫЙ БОББИНГ ВВЕРХ-ВНИЗ (Y-AXIS TRANSLATE) */
+.cube-wobbler.wobbling {
+    animation: gc-float-up-down 5.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+}
+
+.cube-wobbler.steady {
+    animation-play-state: paused;
+}
+
+/* Честное плавание вверх и вниз на 22px в окне браузера с легким креном */
+@keyframes gc-float-up-down {
+    0% {
+        transform: translateY(-20px) rotateX(4deg) rotateY(-6deg);
+    }
+    50% {
+        transform: translateY(0px) rotateX(-2deg) rotateY(0deg);
+    }
+    100% {
+        transform: translateY(22px) rotateX(5deg) rotateY(6deg);
+    }
+}
+
+/* Сочное рыскание влево-вправо по Y на 25 градусов с легким креном */
+@keyframes gc-y-wobble {
+    0% {
+        transform: rotateX(5deg) rotateY(-24deg) rotateZ(1.5deg);
+    }
+    50% {
+        transform: rotateX(-4deg) rotateY(0deg) rotateZ(-1deg);
+    }
+    100% {
+        transform: rotateX(6deg) rotateY(24deg) rotateZ(-1.5deg);
+    }
+}
+
+/* ВНУТРЕННИЙ КУБ */
+.cube {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.65s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+}
+
+/* ГРАНИ И ИРИДЕСЦЕНЦИЯ */
+.cube-face {
+    position: absolute;
+    width: var(--cube-size);
+    height: var(--cube-size);
+    box-sizing: border-box;
+    backface-visibility: hidden;
+    border-radius: 14px;
+    overflow: hidden;
+
+    /* Радужный скол стекла */
+    border: 2px solid transparent;
+    background-image: 
+        linear-gradient(var(--gc-panel-bg), var(--gc-panel-bg)), 
+        linear-gradient(135deg, 
+            #ff007f 0%, 
+            #7928ca 20%, 
+            #0070f3 40%, 
+            #00dfd8 60%, 
+            #79ffe1 80%, 
+            #ff0080 100%
+        );
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.9), inset 0 0 25px rgba(0, 112, 243, 0.15);
+}
+
+.cube-face::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(125deg, rgba(255, 255, 255, 0.15) 0%, transparent 40%, rgba(255, 255, 255, 0.02) 100%);
+}
+
+/* Координаты граней */
+.face-front  { transform: rotateY(0deg) translateZ(var(--half-size)); }
+.face-top    { transform: rotateX(90deg) translateZ(var(--half-size)); }
+.face-bottom { transform: rotateX(-90deg) translateZ(var(--half-size)); }
+.face-left   { transform: rotateY(-90deg) translateZ(var(--half-size)); }
+.face-right  { transform: rotateY(90deg) translateZ(var(--half-size)); }
+.face-back   { transform: rotateY(180deg) translateZ(var(--half-size)); }
+
+/* Повороты */
+.cube.show-front    { transform: rotateX(0deg) rotateY(0deg); }
+.cube.show-projects { transform: rotateX(-90deg); }
+.cube.show-links    { transform: rotateX(90deg); }
+.cube.show-specs    { transform: rotateY(90deg); }
+.cube.show-about    { transform: rotateY(-90deg); }
+
+/* Контент */
+.panel-wrapper {
+    height: 100%;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+}
+
+.gc-cross-menu {
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    justify-items: center;
+}
+
+.gc-btn-nav {
+    background: transparent;
+    border: none;
+    color: var(--gc-text-dim);
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 8px 14px;
+    border-radius: 6px;
+    transition: color 0.15s ease, text-shadow 0.15s ease;
+}
+
+.gc-btn-nav:hover {
+    color: #ffffff;
+    text-shadow: 0 0 8px var(--gc-cyan);
+}
+
+.btn-pos-top    { grid-row: 1; grid-column: 2; }
+.btn-pos-left   { grid-row: 2; grid-column: 1; }
+.btn-pos-center { grid-row: 2; grid-column: 2; text-align: center; }
+.btn-pos-right  { grid-row: 2; grid-column: 3; }
+.btn-pos-bottom { grid-row: 3; grid-column: 2; }
+
+.center-core {
+    background: rgba(14, 19, 36, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 14px 20px;
+    border-radius: 8px;
+}
+.core-title { display: block; font-size: 1.25rem; font-weight: 800; color: #fff; }
+.core-sub { font-size: 0.7rem; color: var(--gc-cyan); letter-spacing: 1px; }
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+}
+.panel-title { font-size: 0.95rem; font-weight: 700; color: #fff; }
+.panel-tag { font-size: 0.65rem; color: var(--gc-purple); background: rgba(129, 140, 248, 0.15); padding: 2px 6px; border-radius: 4px; }
+
+.panel-scrollable {
+    overflow-y: auto;
+    flex: 1;
+    padding-right: 4px;
+}
+.panel-scrollable::-webkit-scrollbar { width: 3px; }
+.panel-scrollable::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 2px; }
+
+.mini-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 8px;
+}
+.mini-card.active-target { border-color: var(--gc-cyan); background: rgba(56, 189, 248, 0.04); }
+.mini-card-head { display: flex; justify-content: space-between; font-size: 0.65rem; margin-bottom: 3px; }
+.status-active { color: var(--gc-green); font-weight: 700; }
+.status-paused { color: #eab308; }
+.status-done { color: var(--gc-cyan); }
+.status-arch { color: var(--gc-text-dim); }
+.mini-card h4 { font-size: 0.85rem; color: #fff; margin-bottom: 3px; }
+.mini-card p { font-size: 0.7rem; color: var(--gc-text-dim); line-height: 1.3; margin-bottom: 6px; }
+.mini-card-tags { display: flex; gap: 4px; }
+.mini-card-tags span { font-size: 0.6rem; background: rgba(0,0,0,0.4); padding: 1px 4px; border-radius: 2px; }
+.card-link { float: right; font-size: 0.65rem; color: var(--gc-cyan); text-decoration: none; font-weight: 700; }
+
+.spec-grid { display: flex; flex-direction: column; gap: 8px; }
+.spec-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.72rem;
+    padding: 6px 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+}
+.spec-label { color: var(--gc-text-dim); }
+.spec-value { color: #fff; font-weight: 600; text-align: right; }
+.spec-value.neon { color: var(--gc-cyan); }
+
+.about-body { font-size: 0.75rem; color: var(--gc-text-dim); line-height: 1.4; margin-bottom: 12px; }
+.tag-wrap { display: flex; flex-wrap: wrap; gap: 5px; }
+.pill { font-size: 0.68rem; padding: 3px 6px; background: rgba(255, 255, 255, 0.05); border-radius: 3px; }
+.pill.main { border: 1px solid var(--gc-cyan); color: #fff; }
+
+.network-nav { display: flex; flex-direction: column; gap: 8px; }
+.net-btn {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 6px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+.net-btn:hover { border-color: var(--gc-cyan); background: rgba(56, 189, 248, 0.08); }
