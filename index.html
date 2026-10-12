@@ -3,223 +3,506 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ewasion137 — Systems & Low-Level Engineer</title>
+    <title>EWASION137 — SYSTEMS & LOW-LEVEL ARCHITECTURE</title>
     
-    <!-- Ultra-fast & readable fonts -->
+    <!-- D-DIN / Inter Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="canvas-night">
 
-    <div class="terminal-frame">
-        
-        <!-- TOP STATUS / META BAR -->
-        <header class="topbar">
-            <div class="topbar-identity">
-                <span class="user-handle">ewasion137</span>
-                <span class="sep">/</span>
-                <span class="user-role">SYSTEMS & KERNEL ARCHITECT</span>
-            </div>
+    <!-- FIXED OVERLAY NAVIGATION -->
+    <header class="nav-bar-overlay" id="topNav">
+        <div class="nav-brand">
+            <span class="brand-mark">EWASION137</span>
+            <span class="brand-divider">/</span>
+            <span class="brand-tag">SYSTEMS & KERNEL ARCHITECT</span>
+        </div>
 
-            <div class="topbar-links">
-                <a href="https://github.com/ewasion137" target="_blank" rel="noopener">GITHUB ↗</a>
-                <a href="https://github.com/Equinox-Collective" target="_blank" rel="noopener">COLLECTIVE ↗</a>
-                <a href="https://ko-fi.com/ewasion" target="_blank" rel="noopener">KO-FI ↗</a>
-            </div>
-        </header>
+        <nav class="nav-links">
+            <a href="#mission" class="nav-item">MISSION</a>
+            <a href="#flagships" class="nav-item">FLAGSHIPS</a>
+            <a href="#fleet" class="nav-item">FLEET MANIFEST</a>
+            <a href="#telemetry" class="nav-item">KERNEL TELEMETRY</a>
+            <a href="https://github.com/ewasion137" target="_blank" rel="noopener" class="nav-item">GITHUB ↗</a>
+            <a href="https://github.com/Equinox-Collective" target="_blank" rel="noopener" class="nav-item">COLLECTIVE ↗</a>
+            <a href="https://ko-fi.com/ewasion" target="_blank" rel="noopener" class="nav-item">KO-FI ↗</a>
+        </nav>
 
-        <!-- MAIN LAYOUT (2-COLUMN HIGH-DENSITY GRID) -->
-        <main class="content-matrix">
-            
-            <!-- LEFT COLUMN: PROFILE, STACK, CORE COMPETENCIES -->
-            <aside class="sidebar-pane">
-                
-                <section class="pane-box">
-                    <div class="box-label">[ OVERVIEW ]</div>
-                    <h1 class="main-title">Low-Level Systems Developer</h1>
-                    <p class="bio-text">
-                        Specializing in bare-metal architecture, operating system kernels, x86_64 boot protocols, and high-performance system-level desktop tooling.
-                    </p>
-                    <div class="contact-action">
-                        <button class="brutal-btn" id="copyMailBtn" data-email="addntim@gmail.com">
-                            COPY CONTACT
-                        </button>
-                    </div>
-                </section>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+    </header>
 
-                <section class="pane-box">
-                    <div class="box-label">[ TECH ]</div>
-                    
-                    <div class="stack-category">
-                        <span class="cat-name">LANGUAGES:</span>
-                        <div class="tag-row">
-                            <span class="tag">C (C99/C11/C23)</span>
-                            <span class="tag">C++ (20/23)</span>
-                            <span class="tag">x86_64 ASM</span>
-                            <span class="tag">C#</span>
-                            <span class="tag">Lua</span>
-                        </div>
-                    </div>
-
-                    <div class="stack-category">
-                        <span class="cat-name">SYSTEMS & ARCHITECTURE:</span>
-                        <div class="tag-row">
-                            <span class="tag">x86_64 Paging</span>
-                            <span class="tag">Limine</span>
-                            <span class="tag">Ring 3 </span>
-                            <span class="tag">VFS / Drivers</span>
-                            <span class="tag">Win32 API</span>
-                            <span class="tag">POSIX</span>
-                        </div>
-                    </div>
-                </section>
-
-            </aside>
-
-            <!-- RIGHT COLUMN: SELECTED ENGINEERING WORKS -->
-            <section class="projects-pane">
-                
-                <div class="section-bar">
-                    <span class="box-label">[ PRODUCTION & RESEARCH REPOSITORIES ]</span>
-                    <div class="filter-group">
-                        <button class="filter-btn active" data-filter="all">ALL [6]</button>
-                        <button class="filter-btn" data-filter="kernel">KERNELS</button>
-                        <button class="filter-btn" data-filter="tooling">SYSTEM TOOLS</button>
-                    </div>
-                </div>
-
-                <div class="projects-grid">
-
-                    <!-- EQUANT OS -->
-                    <article class="project-card" data-cat="kernel">
-                        <div class="card-header">
-                            <div class="name-box">
-                                <span class="proj-title">EquantOS</span>
-                                <span class="badge active">ACTIVE DEV (Long Term)</span>
-                            </div>
-                            <span class="proj-role">LEAD</span>
-                        </div>
-                        <p class="proj-desc">
-                            Minimal OS kernel with clean Ring 3, Linux compatible syscalls. Evolution of the EquinoxOS code.
-                        </p>
-                        <div class="card-footer">
-                            <span class="code-stack">C / x86_64 ASM</span>
-                            <a href="https://github.com/Equinox-Collective/EquantOS" target="_blank" rel="noopener" class="link-btn">SOURCE ↗</a>
-                        </div>
-                    </article>
-
-                    <!-- CREMNIY -->
-                    <article class="project-card" data-cat="tooling">
-                        <div class="card-header">
-                            <div class="name-box">
-                                <span class="proj-title">Cremniy</span>
-                                <span class="badge active">ACTIVE</span>
-                            </div>
-                            <span class="proj-role">CONTRIBUTOR</span>
-                        </div>
-                        <p class="proj-desc">
-                            Technical binary inspection and reverse-engineering suite. Features native high-throughput HEX editing, disassembly visualizers, and PE/ELF structure analysis.
-                        </p>
-                        <div class="card-footer">
-                            <span class="code-stack">C++ / Qt / Binary Tools</span>
-                            <a href="https://github.com/igmunv/cremniy" target="_blank" rel="noopener" class="link-btn">SOURCE ↗</a>
-                        </div>
-                    </article>
-
-                    <!-- EQUINOX OS -->
-                    <article class="project-card" data-cat="kernel">
-                        <div class="card-header">
-                            <div class="name-box">
-                                <span class="proj-title">EquinoxOS</span>
-                                <span class="badge stable">STABLE / ARCHIVE</span>
-                            </div>
-                            <span class="proj-role">LEAD</span>
-                        </div>
-                        <p class="proj-desc">
-                            Complete monolithic x86_64 OS kernel using Limine. Implements pre-emptive multi-tasking, virtual memory manager, FAT32/EXT2 VFS, and native AC97 audio driver.
-                        </p>
-                        <div class="card-footer">
-                            <span class="code-stack">C / ASM / Limine / VFS</span>
-                            <a href="https://github.com/Equinox-Collective/EquinoxOS" target="_blank" rel="noopener" class="link-btn">SOURCE ↗</a>
-                        </div>
-                    </article>
-
-                    <!-- HYPRWIN -->
-                    <article class="project-card" data-cat="tooling">
-                        <div class="card-header">
-                            <div class="name-box">
-                                <span class="proj-title">HyprWin</span>
-                                <span class="badge paused">PAUSED</span>
-                            </div>
-                            <span class="proj-role">DEVELOPER</span>
-                        </div>
-                        <p class="proj-desc">
-                            Dynamic tiling window manager engine for Windows NT, bringing Unix-like Hyprland ergonomics and programmable Lua configuration hooks to the desktop.
-                        </p>
-                        <div class="card-footer">
-                            <span class="code-stack">C++ / Win32 API / Lua</span>
-                            <a href="https://github.com/ewasion137/HyprWin" target="_blank" rel="noopener" class="link-btn">SOURCE ↗</a>
-                        </div>
-                    </article>
-
-                    <!-- ZENITH PLAYER -->
-                    <article class="project-card" data-cat="tooling">
-                        <div class="card-header">
-                            <div class="name-box">
-                                <span class="proj-title">ZenithPlayer</span>
-                                <span class="badge complete">RELEASE</span>
-                            </div>
-                            <span class="proj-role">DEVELOPER</span>
-                        </div>
-                        <p class="proj-desc">
-                             Desktop audio player application. Features custom equalization, dynamic pitch/speed controls.
-                        </p>
-                        <div class="card-footer">
-                            <span class="code-stack">Desktop / Audio Engine</span>
-                            <a href="https://github.com/ewasion137/ZenithPlayer" target="_blank" rel="noopener" class="link-btn">SOURCE ↗</a>
-                        </div>
-                    </article>
-
-                    <!-- WINFORTUNE -->
-                    <article class="project-card" data-cat="tooling">
-                        <div class="card-header">
-                            <div class="name-box">
-                                <span class="proj-title">winfortune</span>
-                                <span class="badge complete">COMPLETE</span>
-                            </div>
-                            <span class="proj-role">DEVELOPER</span>
-                        </div>
-                        <p class="proj-desc">
-                            Native zero-dependency Windows CLI port of the BSD fortune utility.
-                        </p>
-                        <div class="card-footer">
-                            <span class="code-stack">ANSI C / Win32 CLI</span>
-                            <a href="https://github.com/ewasion137/winfortune" target="_blank" rel="noopener" class="link-btn">SOURCE ↗</a>
-                        </div>
-                    </article>
-
-                </div>
-
-            </section>
-
-        </main>
-
-        <!-- COMPACT FOOTER -->
-        <footer class="bottombar">
-            <div class="footer-left">
-                <span>hello! </span>
-                <span class="sep">//</span>
-                <span>... why are you reading that?</span>
-            </div>
-            <div class="footer-right">
-                <span>EWASION137</span>
-            </div>
-        </footer>
-
+    <!-- MOBILE MENU DRAWER -->
+    <div class="mobile-drawer" id="mobileDrawer">
+        <nav class="mobile-nav-links">
+            <a href="#mission" class="drawer-item">MISSION</a>
+            <a href="#flagships" class="drawer-item">FLAGSHIPS</a>
+            <a href="#fleet" class="drawer-item">FLEET MANIFEST</a>
+            <a href="#telemetry" class="drawer-item">KERNEL TELEMETRY</a>
+            <a href="https://github.com/ewasion137" target="_blank" rel="noopener" class="drawer-item">GITHUB ↗</a>
+            <a href="https://github.com/Equinox-Collective" target="_blank" rel="noopener" class="drawer-item">COLLECTIVE ↗</a>
+            <a href="https://ko-fi.com/ewasion" target="_blank" rel="noopener" class="drawer-item">KO-FI ↗</a>
+        </nav>
     </div>
+
+    <!-- HERO SECTION: MISSION 01 -->
+    <section class="band-hero" id="mission">
+        <div class="hero-backdrop">
+            <div class="stars-layer"></div>
+            <div class="grid-horizon"></div>
+        </div>
+
+        <div class="hero-content">
+            <span class="micro-eyebrow">MISSION ARCHITECTURE // BARE-METAL & COMPUTE</span>
+            <h1 class="display-headline-hero">LOW-LEVEL SYSTEMS DEVELOPER</h1>
+            <p class="hero-lead">
+                Specializing in bare-metal architecture, operating system kernels, x86_64 boot protocols, virtual memory paging, and high-performance desktop tooling.
+            </p>
+            
+            <div class="hero-actions">
+                <button class="button-ghost-on-dark" id="copyMailBtn" data-email="addntim@gmail.com">
+                    INITIALIZE COMMS (COPY CONTACT)
+                </button>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <span class="scroll-text">MISSION MANIFEST</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- FULL BLEED FLAGSHIPS -->
+    <main id="flagships">
+
+        <!-- BAND 1: EQUANT OS -->
+        <section class="band-fullbleed" id="equant-os">
+            <div class="band-bg-media">
+                <div class="code-backdrop-matrix">
+                    <pre><code>// EQUANTOS LIMINE PROTOCOL INIT
+base_revision = LIMINE_BASE_REVISION(3);
+pmm_init(); vmm_init(); apic_init();
+tty_print("Welcome to EquantOS!\n");
+kernel_start_userland();</code></pre>
+                </div>
+            </div>
+            <div class="band-overlay-container">
+                <div class="band-meta">
+                    <span class="micro-eyebrow">NEXT-GEN MONOLITHIC KERNEL // ACTIVE DEVELOPMENT</span>
+                    <h2 class="display-headline">EQUANT OS</h2>
+                    <p class="band-description">
+                        Minimal x86_64 operating system kernel featuring Ring 3 isolation, POSIX/Linux-compatible system calls, Limine base boot protocol, and high-throughput userspace scheduling.
+                    </p>
+                    <div class="specs-tape">
+                        <div class="spec-cell">
+                            <span class="spec-value">RING 3</span>
+                            <span class="spec-label">PROTECTION DOMAIN</span>
+                        </div>
+                        <div class="spec-cell">
+                            <span class="spec-value">POSIX</span>
+                            <span class="spec-label">ABI COMPATIBILITY</span>
+                        </div>
+                        <div class="spec-cell">
+                            <span class="spec-value">LIMINE V3</span>
+                            <span class="spec-label">BOOTSTRAP PROTOCOL</span>
+                        </div>
+                    </div>
+                    <div class="band-cta-row">
+                        <a href="https://github.com/Equinox-Collective/EquantOS" target="_blank" rel="noopener" class="button-ghost-on-dark">
+                            EXPLORE REPOSITORY ↗
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BAND 2: HYPRWIN -->
+        <section class="band-fullbleed" id="hyprwin">
+            <div class="band-bg-media">
+                <img src="https://private-user-images.githubusercontent.com/194919296/661494338-eb15378e-6080-4eea-9e3e-4b3a1f0a3a8e.gif?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTE4MzM2NjMsIm5iZiI6MTc5MTgzMzM2MywicGF0aCI6Ii8xOTQ5MTkyOTYvNjYxNDk0MzM4LWViMTUzNzhlLTYwODAtNGVlYS05ZTNlLTRiM2ExZjBhM2E4ZS5naWY_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYxMDEyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MTAxMlQxOTI5MjNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1iM2Q2MWZmY2E3MGQ4ZTlmZWM2MjFlOTI2YzZiMWQ5N2ExY2Q5YzExM2ZkMGQ5Y2M3ZTA3NDZlMGNkZmIxN2ZjJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZnaWYifQ.fvY2YKLCvgUAMVRMeySP73BOEiI86ZtgliqwnHxlt_8" alt="HyprWin Window Manager Engine" class="hero-cinematic-img" loading="lazy" />
+                <div class="media-dark-vignette"></div>
+            </div>
+            <div class="band-overlay-container">
+                <div class="band-meta">
+                    <span class="micro-eyebrow">DESKTOP ERGONOMICS // WINDOWS NT ENGINE</span>
+                    <h2 class="display-headline">HYPRWIN</h2>
+                    <p class="band-description">
+                        Dynamic tiling window manager engine bringing Unix-like Hyprland ergonomics and real-time programmable Lua hooks directly to Windows NT via Win32 API.
+                    </p>
+                    <div class="specs-tape">
+                        <div class="spec-cell">
+                            <span class="spec-value">C++ / WIN32</span>
+                            <span class="spec-label">CORE SYSTEM HOOKS</span>
+                        </div>
+                        <div class="spec-cell">
+                            <span class="spec-value">LUA JIT</span>
+                            <span class="spec-label">RUNTIME CONFIGURATION</span>
+                        </div>
+                        <div class="spec-cell">
+                            <span class="spec-value">ZERO BLOAT</span>
+                            <span class="spec-label">LOW-LATENCY TILING</span>
+                        </div>
+                    </div>
+                    <div class="band-cta-row">
+                        <a href="https://github.com/ewasion137/HyprWin" target="_blank" rel="noopener" class="button-ghost-on-dark">
+                            VIEW HYPRWIN ENGINE ↗
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BAND 3: ZENITH PLAYER -->
+        <section class="band-fullbleed" id="zenith">
+            <div class="band-bg-media">
+                <img src="https://private-user-images.githubusercontent.com/194919296/646695197-83d220a1-f705-4bcb-ac11-17809260efd2.gif?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTE4MzM2NjQsIm5iZiI6MTc5MTgzMzM2NCwicGF0aCI6Ii8xOTQ5MTkyOTYvNjQ2Njk1MTk3LTgzZDIyMGExLWY3MDUtNGJjYi1hYzExLTE3ODA5MjYwZWZkMi5naWY_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYxMDEyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MTAxMlQxOTI5MjRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04ZGRiZjQ3YWI5ODg0YzgwZDg1MDFjNmYyZmY3YThhYWNmZGMxNDE2NjUzMzYwOTI2YTcwMTJkMGVjY2FlMjlkJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZnaWYifQ.aKLzP5dG1AW4XjkYU_NGyyLe8_AfRn2A8O26OyWHDB4" alt="Zenith Player Audio Engine" class="hero-cinematic-img" loading="lazy" />
+                <div class="media-dark-vignette"></div>
+            </div>
+            <div class="band-overlay-container">
+                <div class="band-meta">
+                    <span class="micro-eyebrow">DSP & AUDIO ARCHITECTURE // DESKTOP CLIENT</span>
+                    <h2 class="display-headline">ZENITH PLAYER</h2>
+                    <p class="band-description">
+                        High-performance desktop audio player suite featuring hardware-accelerated sound stream mixing, parametric equalization, dynamic pitch/speed modulators, and Discord RPC integrations.
+                    </p>
+                    <div class="specs-tape">
+                        <div class="spec-cell">
+                            <span class="spec-value">DSP MIXER</span>
+                            <span class="spec-label">CUSTOM EQUALIZATION</span>
+                        </div>
+                        <div class="spec-cell">
+                            <span class="spec-value">THEMING</span>
+                            <span class="spec-label">GFX-OFF ENGINE MODE</span>
+                        </div>
+                        <div class="spec-cell">
+                            <span class="spec-value">ONLINE SYNC</span>
+                            <span class="spec-label">STREAM & RPC CONNECT</span>
+                        </div>
+                    </div>
+                    <div class="band-cta-row">
+                        <a href="https://github.com/ewasion137/ZenithPlayer" target="_blank" rel="noopener" class="button-ghost-on-dark">
+                            ACCESS PLAYER SOURCE ↗
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BAND 4: EQUINOX OS -->
+        <section class="band-fullbleed" id="equinox-os">
+            <div class="band-bg-media">
+                <div class="code-backdrop-matrix">
+                    <pre><code>// EQUINOXOS x86_64 MONOLITHIC KERNEL
+init_gdt(); init_sse(); pmm_init(); vmm_init();
+init_vesa((uintptr_t)fb->address, fb->width, fb->height, fb->pitch);
+vfs_mount("/", ext2_get_root_node());
+exec_from_disk("bin/sysgui.elf");</code></pre>
+                </div>
+            </div>
+            <div class="band-overlay-container">
+                <div class="band-meta">
+                    <span class="micro-eyebrow">MONOLITHIC KERNEL ARCHITECTURE // PRODUCTION REFERENCE</span>
+                    <h2 class="display-headline">EQUINOX OS</h2>
+                    <p class="band-description">
+                        Complete monolithic x86_64 OS kernel using Limine. Implements pre-emptive multi-tasking, VMM paging, FAT32/EXT2 Virtual File System, Write-Combining VESA framebuffers, and native AC97 audio drivers.
+                    </p>
+                    <div class="specs-tape">
+                        <div class="spec-cell">
+                            <span class="spec-value">EXT2 / FAT32</span>
+                            <span class="spec-label">VFS ARCHITECTURE</span>
+                        </div>
+                        <div class="spec-cell">
+                            <span class="spec-value">PREEMPTIVE</span>
+                            <span class="spec-label">ROUND-ROBIN SCHEDULER</span>
+                        </div>
+                        <div class="spec-cell">
+                            <span class="spec-value">AC97 & VESA</span>
+                            <span class="spec-label">NATIVE DRIVER STACK</span>
+                        </div>
+                    </div>
+                    <div class="band-cta-row">
+                        <a href="https://github.com/Equinox-Collective/EquinoxOS" target="_blank" rel="noopener" class="button-ghost-on-dark">
+                            VIEW MONOLITH SOURCE ↗
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- SECTION: FLEET MANIFEST & TECHNICAL SPEC SHEET -->
+    <section class="band-manifest" id="fleet">
+        <div class="manifest-container">
+            <div class="manifest-header">
+                <div>
+                    <span class="micro-eyebrow">COMPLETE INVENTORY // ALL VEHICLES & SYSTEM PACKAGES</span>
+                    <h2 class="display-headline-section">FLEET MANIFEST</h2>
+                </div>
+
+                <div class="manifest-filter-pill-group">
+                    <button class="manifest-filter-pill active" data-filter="all">ALL UNITS [6]</button>
+                    <button class="manifest-filter-pill" data-filter="kernel">KERNELS</button>
+                    <button class="manifest-filter-pill" data-filter="tooling">SYSTEM TOOLS</button>
+                </div>
+            </div>
+
+            <div class="manifest-table-wrapper">
+                <table class="manifest-table">
+                    <thead>
+                        <tr>
+                            <th>IDENTIFIER</th>
+                            <th>DOMAIN</th>
+                            <th>STACK & SPECIFICATION</th>
+                            <th>MISSION STATUS</th>
+                            <th class="align-right">REPOSITORY</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="manifest-row" data-cat="kernel">
+                            <td class="cell-primary">
+                                <span class="manifest-unit-name">EQUANT OS</span>
+                                <span class="manifest-sub">Next-gen minimal OS kernel with clean Ring 3</span>
+                            </td>
+                            <td>KERNEL SYSTEM</td>
+                            <td class="cell-mono">C / x86_64 ASM / Limine</td>
+                            <td><span class="status-indicator-tag">ACTIVE DEV</span></td>
+                            <td class="align-right">
+                                <a href="https://github.com/Equinox-Collective/EquantOS" target="_blank" rel="noopener" class="table-link">SOURCE ↗</a>
+                            </td>
+                        </tr>
+
+                        <tr class="manifest-row" data-cat="tooling">
+                            <td class="cell-primary">
+                                <span class="manifest-unit-name">CREMNIY</span>
+                                <span class="manifest-sub">Binary reverse-engineering & HEX inspection suite</span>
+                            </td>
+                            <td>SYSTEM TOOLING</td>
+                            <td class="cell-mono">C++ / Qt / PE / ELF</td>
+                            <td><span class="status-indicator-tag">ACTIVE</span></td>
+                            <td class="align-right">
+                                <a href="https://github.com/igmunv/cremniy" target="_blank" rel="noopener" class="table-link">SOURCE ↗</a>
+                            </td>
+                        </tr>
+
+                        <tr class="manifest-row" data-cat="kernel">
+                            <td class="cell-primary">
+                                <span class="manifest-unit-name">EQUINOX OS</span>
+                                <span class="manifest-sub">Monolithic kernel with EXT2/FAT32, VESA & AC97</span>
+                            </td>
+                            <td>KERNEL SYSTEM</td>
+                            <td class="cell-mono">C / ASM / Limine / VFS</td>
+                            <td><span class="status-indicator-tag">STABLE / ARCHIVE</span></td>
+                            <td class="align-right">
+                                <a href="https://github.com/Equinox-Collective/EquinoxOS" target="_blank" rel="noopener" class="table-link">SOURCE ↗</a>
+                            </td>
+                        </tr>
+
+                        <tr class="manifest-row" data-cat="tooling">
+                            <td class="cell-primary">
+                                <span class="manifest-unit-name">HYPRWIN</span>
+                                <span class="manifest-sub">Dynamic tiling window manager engine for Windows NT</span>
+                            </td>
+                            <td>SYSTEM TOOLING</td>
+                            <td class="cell-mono">C++ / Win32 API / Lua</td>
+                            <td><span class="status-indicator-tag">PAUSED</span></td>
+                            <td class="align-right">
+                                <a href="https://github.com/ewasion137/HyprWin" target="_blank" rel="noopener" class="table-link">SOURCE ↗</a>
+                            </td>
+                        </tr>
+
+                        <tr class="manifest-row" data-cat="tooling">
+                            <td class="cell-primary">
+                                <span class="manifest-unit-name">ZENITH PLAYER</span>
+                                <span class="manifest-sub">Audio DSP mixer with pitch/speed dynamics & Discord RPC</span>
+                            </td>
+                            <td>DESKTOP MEDIA</td>
+                            <td class="cell-mono">Desktop / Audio Engine</td>
+                            <td><span class="status-indicator-tag">RELEASE</span></td>
+                            <td class="align-right">
+                                <a href="https://github.com/ewasion137/ZenithPlayer" target="_blank" rel="noopener" class="table-link">SOURCE ↗</a>
+                            </td>
+                        </tr>
+
+                        <tr class="manifest-row" data-cat="tooling">
+                            <td class="cell-primary">
+                                <span class="manifest-unit-name">WINFORTUNE</span>
+                                <span class="manifest-sub">Zero-dependency Windows CLI port of BSD fortune</span>
+                            </td>
+                            <td>CLI UTILITY</td>
+                            <td class="cell-mono">ANSI C / Win32 CLI</td>
+                            <td><span class="status-indicator-tag">COMPLETE</span></td>
+                            <td class="align-right">
+                                <a href="https://github.com/ewasion137/winfortune" target="_blank" rel="noopener" class="table-link">SOURCE ↗</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- CORE SPECIFICATIONS GRID -->
+            <div class="technical-capabilities-grid">
+                <div class="tech-card">
+                    <span class="micro-eyebrow">CORE LANGUAGES</span>
+                    <ul class="specs-list">
+                        <li><span>C (C99 / C11 / C23)</span> <span>BARE-METAL</span></li>
+                        <li><span>C++ (20 / 23)</span> <span>SYSTEMS</span></li>
+                        <li><span>x86_64 ASSEMBLY</span> <span>LOW-LEVEL</span></li>
+                        <li><span>C#</span> <span>APPLICATIONS</span></li>
+                        <li><span>LUA</span> <span>RUNTIME SCRIPTING</span></li>
+                    </ul>
+                </div>
+
+                <div class="tech-card">
+                    <span class="micro-eyebrow">SYSTEM ARCHITECTURE</span>
+                    <ul class="specs-list">
+                        <li><span>x86_64 PAGING & VMM</span> <span>HARDWARE MMU</span></li>
+                        <li><span>LIMINE BOOT PROTOCOL</span> <span>HHDM / ELF64</span></li>
+                        <li><span>RING 3 USERSPACE</span> <span>SYSCALL ABI</span></li>
+                        <li><span>VFS ARCHITECTURE</span> <span>EXT2 / FAT32</span></li>
+                        <li><span>WIN32 / POSIX</span> <span>NATIVE RUNTIMES</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: LIVE KERNEL TELEMETRY INSPECTOR -->
+    <section class="band-telemetry" id="telemetry">
+        <div class="manifest-container">
+            <div class="telemetry-header">
+                <div>
+                    <span class="micro-eyebrow">FIRMWARE & HARDWARE TELEMETRY</span>
+                    <h2 class="display-headline-section">KERNEL ARCHITECTURE LOG</h2>
+                </div>
+                
+                <div class="telemetry-tabs">
+                    <button class="telemetry-tab active" data-tab="equinox">EQUINOXOS (kernel.c)</button>
+                    <button class="telemetry-tab" data-tab="equant">EQUANTOS (main.c)</button>
+                </div>
+            </div>
+
+            <div class="code-viewport-panel">
+                <div class="code-viewport-top">
+                    <span class="code-file-name" id="codeFilename">EquinoxOS / kernel.c — Limine Monolithic Entry</span>
+                    <span class="code-file-arch">x86_64 • RING 0 • WRITE-COMBINING FB</span>
+                </div>
+
+                <div class="code-snippet-body" id="codeSnippetEquinox">
+<pre><code><span class="c-comment">// EquinoxOS Monolithic Kernel Entry Sequence</span>
+<span class="c-keyword">void</span> <span class="c-fn">kmain</span>(<span class="c-keyword">void</span>) {
+    <span class="c-fn">serial_init</span>(COM1);
+    <span class="c-fn">tty_init</span>();                 
+    <span class="c-fn">term_print</span>(<span class="c-str">"\n=== EquinoxOS Kernel Starting ===\n"</span>);
+
+    <span class="c-comment">/* Validate Limine Higher-Half Direct Map */</span>
+    <span class="c-keyword">if</span> (hhdm_request.response == NULL) {
+        <span class="c-fn">term_print</span>(<span class="c-str">"ERROR: Limine HHDM not available!\n"</span>);
+        <span class="c-keyword">while</span> (1) __asm__(<span class="c-str">"cli; hlt"</span>);
+    }
+    hhdm_offset = hhdm_request.response->offset;
+
+    <span class="c-fn">init_gdt</span>();
+    <span class="c-fn">init_sse</span>();
+    <span class="c-fn">pmm_init</span>();
+    <span class="c-fn">vmm_init</span>();
+    <span class="c-fn">init_heap</span>((uint64_t)<span class="c-fn">pmm_alloc_continuous</span>(16384) + hhdm_offset, 64 * 1024 * 1024);
+
+    <span class="c-comment">/* Write-Combining Accelerated VESA Framebuffer */</span>
+    <span class="c-keyword">struct</span> limine_framebuffer *fb = framebuffer_request.response->framebuffers[0];
+    <span class="c-fn">init_vesa</span>((uintptr_t)fb->address, fb->width, fb->height, fb->pitch);
+    <span class="c-fn">vmm_remap_fb_wc</span>();
+
+    <span class="c-comment">/* Mount VFS and Dispatch Ring 3 Userspace Environment */</span>
+    <span class="c-fn">vfs_init</span>();
+    <span class="c-fn">ext2_init</span>();
+    <span class="c-fn">fat32_init</span>();
+    <span class="c-fn">exec_from_disk</span>(<span class="c-str">"bin/sysgui.elf"</span>); 
+    <span class="c-fn">term_print</span>(<span class="c-str">"enGUI spawned as Ring 3 init process\n"</span>);
+}</code></pre>
+                </div>
+
+                <div class="code-snippet-body hide" id="codeSnippetEquant">
+<pre><code><span class="c-comment">// EquantOS Limine Bootstrap & Userland Spawn</span>
+<span class="c-keyword">void</span> <span class="c-fn">_start</span>(<span class="c-keyword">void</span>) {
+    <span class="c-fn">serial_init</span>(COM1);
+    <span class="c-fn">enable_fpu_sse</span>();
+    <span class="c-fn">init_gdt</span>();
+    <span class="c-fn">init_idt</span>();
+
+    <span class="c-keyword">if</span> (hhdm_request.response == NULL || hhdm_request.response->offset == 0) {
+        <span class="c-fn">PANIC</span>(<span class="c-str">"Limine HHDM response is NULL!"</span>);
+    }
+    hhdm_offset = hhdm_request.response->offset;
+
+    <span class="c-keyword">if</span> (framebuffer_request.response != NULL && framebuffer_request.response->framebuffer_count > 0) {
+        kernel_fb = framebuffer_request.response->framebuffers[0];
+        <span class="c-fn">tty_init</span>(kernel_fb->address, kernel_fb->width, kernel_fb->height, kernel_fb->pitch);
+    }
+
+    <span class="c-fn">pmm_init</span>();
+    <span class="c-fn">vmm_init</span>();
+    <span class="c-fn">init_heap</span>(0, 0);
+    <span class="c-fn">apic_init</span>();
+
+    <span class="c-keyword">asm</span> <span class="c-keyword">volatile</span> (<span class="c-str">"sti"</span>);
+    <span class="c-fn">serial_puts</span>(COM1, <span class="c-str">"[KERNEL] Executing Initcalls...\n"</span>);
+    <span class="c-fn">do_initcalls</span>();
+
+    <span class="c-fn">tty_print</span>(<span class="c-str">"\nWelcome to EquantOS!\n\n"</span>);
+    <span class="c-fn">kernel_start_userland</span>();
+
+    <span class="c-keyword">for</span> (;;) {
+        <span class="c-keyword">asm</span> <span class="c-keyword">volatile</span> (<span class="c-str">"hlt"</span>);
+    }
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER DARK -->
+    <footer class="footer-dark">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <span class="footer-brand">EWASION137</span>
+                <p class="footer-copy">
+                    SYSTEMS ARCHITECTURE & LOW-LEVEL ENGINEERING // MONOLITHIC KERNELS, MMU PAGING, BARE METAL DRIVERS.
+                </p>
+            </div>
+            
+            <div class="footer-col">
+                <span class="footer-heading">NAVIGATION</span>
+                <ul class="footer-nav">
+                    <li><a href="#mission">MISSION OVERVIEW</a></li>
+                    <li><a href="#flagships">VEHICLES & KERNELS</a></li>
+                    <li><a href="#fleet">FLEET MANIFEST</a></li>
+                    <li><a href="#telemetry">SOURCE TELEMETRY</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <span class="footer-heading">DIRECT COMM</span>
+                <ul class="footer-nav">
+                    <li><a href="https://github.com/ewasion137" target="_blank" rel="noopener">GITHUB</a></li>
+                    <li><a href="https://github.com/Equinox-Collective" target="_blank" rel="noopener">EQUINOX COLLECTIVE</a></li>
+                    <li><a href="https://ko-fi.com/ewasion" target="_blank" rel="noopener">KO-FI</a></li>
+                    <li><a href="mailto:addntim@gmail.com">EMAIL COMMS</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-baseline">
+            <span class="baseline-text">EWASION137 © 2026 // ALL SYSTEMS NOMINAL</span>
+            <span class="baseline-text">AUSTERE AEROSPACE COMPUTATION SPEC</span>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>

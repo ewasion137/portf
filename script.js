@@ -1,42 +1,93 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Копирование контакта в 1 клик с брутальным откликом
+    // 1. Fixed Nav dynamic backdrop state
+    const nav = document.getElementById('topNav');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    });
+
+    // 2. Mobile Navigation Drawer Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    if (menuToggle && mobileDrawer) {
+        menuToggle.addEventListener('click', () => {
+            mobileDrawer.classList.toggle('open');
+        });
+
+        // Close drawer on link selection
+        mobileDrawer.querySelectorAll('.drawer-item').forEach(item => {
+            item.addEventListener('click', () => {
+                mobileDrawer.classList.remove('open');
+            });
+        });
+    }
+
+    // 3. One-Click Contact Copy (SpaceX ghost button feedback)
     const copyBtn = document.getElementById('copyMailBtn');
     if (copyBtn) {
         copyBtn.addEventListener('click', () => {
             const email = copyBtn.getAttribute('data-email');
             navigator.clipboard.writeText(email).then(() => {
                 const originalText = copyBtn.innerText;
-                copyBtn.innerText = 'COPIED TO CLIPBOARD';
-                copyBtn.style.background = 'var(--accent)';
-                copyBtn.style.color = 'var(--bg)';
+                copyBtn.innerText = 'COMMS ESTABLISHED (COPIED)';
+                copyBtn.style.backgroundColor = 'var(--colors-on-primary)';
+                copyBtn.style.color = 'var(--colors-primary)';
                 
                 setTimeout(() => {
                     copyBtn.innerText = originalText;
-                    copyBtn.style.background = '';
+                    copyBtn.style.backgroundColor = '';
                     copyBtn.style.color = '';
-                }, 1800);
+                }, 2000);
             });
         });
     }
 
-    // 2. Быстрый фильтр проектов без перезагрузки
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('.project-card');
+    // 4. Fleet Manifest Live Filter (Kernel / Tools)
+    const filterPills = document.querySelectorAll('.manifest-filter-pill');
+    const tableRows = document.querySelectorAll('.manifest-row');
 
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+    filterPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+            filterPills.forEach(p => p.classList.remove('active'));
+            pill.classList.add('active');
 
-            const filter = btn.getAttribute('data-filter');
+            const filter = pill.getAttribute('data-filter');
 
-            cards.forEach(card => {
-                if (filter === 'all' || card.getAttribute('data-cat') === filter) {
-                    card.style.display = 'flex';
+            tableRows.forEach(row => {
+                if (filter === 'all' || row.getAttribute('data-cat') === filter) {
+                    row.style.display = '';
                 } else {
-                    card.style.display = 'none';
+                    row.style.display = 'none';
                 }
             });
+        });
+    });
+
+    // 5. Architecture Telemetry Tabs (EquinoxOS vs EquantOS C Source)
+    const telemetryTabs = document.querySelectorAll('.telemetry-tab');
+    const snippetEquinox = document.getElementById('codeSnippetEquinox');
+    const snippetEquant = document.getElementById('codeSnippetEquant');
+    const codeFilename = document.getElementById('codeFilename');
+
+    telemetryTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            telemetryTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            const tabKey = tab.getAttribute('data-tab');
+
+            if (tabKey === 'equinox') {
+                snippetEquinox.classList.remove('hide');
+                snippetEquant.classList.add('hide');
+                codeFilename.innerText = 'EquinoxOS / kernel.c — Limine Monolithic Entry';
+            } else if (tabKey === 'equant') {
+                snippetEquant.classList.remove('hide');
+                snippetEquinox.classList.add('hide');
+                codeFilename.innerText = 'EquantOS / main.c — Clean Ring 3 & Initcalls';
+            }
         });
     });
 });
