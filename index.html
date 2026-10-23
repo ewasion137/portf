@@ -3,82 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EWASION137 | Low-Level Systems & Kernel Architect</title>
+    <meta name="description" content="EWASION137 | Low-level systems architect, monolithic x86_64 operating systems, native runtimes and DSP audio engines.">
+    <meta name="theme-color" content="#000000">
+    <title>EWASION137 // LOW-LEVEL SYSTEMS &amp; KERNEL ARCHITECT</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- BACKGROUND 0101 ELECTRIC NETWORK CANVAS -->
+    <canvas id="binaryNetworkCanvas" class="bg-binary-canvas"></canvas>
+
+    <!-- CUSTOM BRUTALIST SIDE SCROLL SLIDER -->
+    <aside class="side-scroll-track" id="sideScrollTrack" aria-label="Page Scroll Controller">
+        <div class="scroll-pct-label" id="scrollPctLabel">00%</div>
+        <div class="scroll-rail-container" id="scrollRailContainer" title="Click or Drag to Scroll">
+            <div class="scroll-slider-thumb" id="scrollSliderThumb"></div>
+        </div>
+    </aside>
+
     <!-- STICKY TOP NAVIGATION -->
     <header class="top-nav" id="topNav">
         <div class="nav-container">
             <div class="nav-left">
-                <a href="#" class="brand-link">
+                <a href="#ascii" class="brand-link" id="brandNickTrigger" title="CLICK NICKNAME TO SUMMON ASCII VAULT">
                     <span class="brand-name">EWASION137</span>
-                    <span class="brand-chip">SYSTEMS</span>
+                    <span class="brand-chip">SYS</span>
                 </a>
                 <nav class="nav-links">
-                    <a href="#flagships" class="nav-link">Flagships</a>
-                    <a href="#fleet" class="nav-link">Fleet Manifest</a>
-                    <a href="#telemetry" class="nav-link">Source Log</a>
+                    <a href="#flagships" class="nav-link">/FLAGSHIPS</a>
+                    <a href="#fleet" class="nav-link">/MANIFEST</a>
+                    <a href="#telemetry" class="nav-link">/TELEMETRY</a>
                 </nav>
             </div>
 
             <div class="nav-right">
-                <a href="https://github.com/ewasion137" target="_blank" rel="noopener" class="btn-secondary">GitHub</a>
-                <button class="btn-accent" id="copyContactBtn" data-email="addntim@gmail.com">Contact</button>
+                <a href="https://github.com/ewasion137" target="_blank" rel="noopener" class="btn-secondary">GITHUB</a>
+                <button class="btn-accent" id="copyContactBtn" data-email="addntim@gmail.com">CONTACT</button>
             </div>
         </div>
     </header>
 
-    <!-- ATMOSPHERIC HERO -->
+    <!-- ATMOSPHERIC BRUTALIST HERO -->
     <section class="hero-band">
         <div class="hero-container">
             <div class="hero-badge">
                 <span class="badge-dot"></span>
-                <span>BARE-METAL & SYSTEMS ENGINEERING</span>
+                <span>BARE-METAL &amp; SYSTEMS ARCHITECTURE // RING 0</span>
             </div>
             
-            <h1 class="hero-title">Operating systems, native runtimes and audio engines.</h1>
+            <h1 class="hero-title">OPERATING SYSTEMS, NATIVE RUNTIMES AND AUDIO ENGINES.</h1>
             <p class="hero-subtitle">
-                Designing monolithic x86_64 kernels, hardware MMU paging, high-throughput desktop window engines and desktop DSP runtimes.
+                Designing monolithic x86_64 kernels, hardware MMU paging, high-throughput desktop window managers and desktop DSP runtimes.
             </p>
 
             <div class="hero-cta-group">
-                <a href="#flagships" class="btn-primary">Explore Products</a>
-                <a href="https://github.com/Equinox-Collective" target="_blank" rel="noopener" class="btn-secondary">Equinox Collective ↗</a>
-            </div>
-
-            <!-- HERO MOCKUP -->
-            <div class="hero-mockup-wrapper">
-                <div class="mockup-window">
-                    <div class="mockup-header">
-                        <div class="mockup-dots">
-                            <span class="dot dot-red"></span>
-                            <span class="dot dot-yellow"></span>
-                            <span class="dot dot-green"></span>
-                        </div>
-                        <span class="mockup-title">equant-kernel/arch/x86_64/bootstrap.c</span>
-                        <span class="mockup-tag">Ring 0 Core</span>
-                    </div>
-                    <div class="mockup-body">
-                        <pre><code><span class="tok-k">void</span> <span class="tok-fn">kmain</span>(<span class="tok-k">void</span>) {
-    <span class="tok-fn">serial_init</span>(COM1);
-    <span class="tok-fn">gdt_init</span>();
-    <span class="tok-fn">idt_init</span>();
-    <span class="tok-fn">pmm_init</span>();
-    <span class="tok-fn">vmm_init</span>();
-
-    <span class="tok-c">/* Enter Ring 3 POSIX isolation layer */</span>
-    <span class="tok-fn">syscall_init</span>();
-    <span class="tok-fn">kernel_start_userland</span>();
-}</code></pre>
-                    </div>
-                </div>
+                <a href="#flagships" class="btn-primary">EXPLORE INVENTORY</a>
+                <a href="https://github.com/Equinox-Collective" target="_blank" rel="noopener" class="btn-secondary">EQUINOX COLLECTIVE ↗</a>
             </div>
         </div>
     </section>
@@ -86,8 +71,8 @@
     <!-- FLAGSHIP PRODUCTS SECTION -->
     <section class="section-container" id="flagships">
         <div class="section-header">
-            <span class="section-label">FLAGSHIP INVENTORY</span>
-            <h2 class="section-title">Core Systems & Runtimes</h2>
+            <span class="section-label">[01] // FLAGSHIP INVENTORY</span>
+            <h2 class="section-title">CORE SYSTEMS &amp; RUNTIMES</h2>
             <p class="section-desc">Monolithic kernels, desktop window managers and low-latency audio suites.</p>
         </div>
 
@@ -97,59 +82,120 @@
             <article class="product-card">
                 <div class="product-info">
                     <div class="product-meta">
-                        <span class="badge-mint">ACTIVE DEV</span>
+                        <span class="badge-cyan">[ACTIVE DEV]</span>
                         <span class="product-category">KERNEL SYSTEM</span>
                     </div>
-                    <h3 class="product-heading">EquantOS</h3>
+                    <h3 class="product-heading">EQUANT OS</h3>
                     <p class="product-text">
                         Next-gen minimal x86_64 monolithic kernel built on Limine V3 protocol. Features complete Ring 3 isolation, POSIX compatible system calls and clean userspace dispatch.
                     </p>
                     <ul class="spec-bullets">
-                        <li><span>Architecture</span><code>x86_64 / ASM</code></li>
-                        <li><span>Isolation</span><code>Ring 3 Domain</code></li>
-                        <li><span>Bootstrap</span><code>Limine V3 HHDM</code></li>
+                        <li><span>ARCHITECTURE</span><code>x86_64 / ASM</code></li>
+                        <li><span>ISOLATION</span><code>Ring 3 Domain</code></li>
+                        <li><span>BOOTSTRAP</span><code>Limine V3 HHDM</code></li>
                     </ul>
                     <div class="product-actions">
-                        <a href="https://github.com/Equinox-Collective/EquantOS" target="_blank" rel="noopener" class="btn-primary">View Repository ↗</a>
+                        <a href="https://github.com/Equinox-Collective/EquantOS" target="_blank" rel="noopener" class="btn-primary">VIEW REPOSITORY ↗</a>
                     </div>
                 </div>
                 <div class="product-visual">
                     <div class="terminal-card">
                         <div class="terminal-bar">
-                            <span>equant-debug.log</span>
-                            <span class="terminal-pill">ACTIVE</span>
+                            <span>equant-boot.log</span>
+                            <span class="terminal-pill">TTY / HW</span>
                         </div>
-                        <pre><code>[0.000000] Limine base protocol confirmed
-[0.000104] HHDM offset: 0xffff800000000000
-[0.001420] PMM: Available RAM: 2048 MB
-[0.002891] VMM: Active Page Table 0x7fe0000
-[0.003110] Ring 3 Syscall Vector Configured
-[0.004201] Userland init dispatch successful</code></pre>
+                        <pre><code>[TTY] Line Editor &amp; Arrow Subsystem initialized.003 " from PciRoot(0x0)/Pci(0x1,0x1)/Ata(Secondary,Master,0x0)
+PMM: Buddy Allocator initialized. Free RAM: 459 MB (Total: 491 MB)t(0x0)/Pci(0x1,0x1)/Ata(Secondary,Master,0x0)
+[VMM] Page Table Subsystem &amp; PAT initialized.
+[MEMORY] Solaris-style Slab &amp; Buddy Kernel Heap Initialized.
+[APIC] Legacy 8259 PIC hardware masked and disabled.
+[APIC] LAPIC Timer calibrated and running in Periodic Mode.
+[APIC] Local APIC initialized successfully.
+[KERNEL] Executing Initcalls...
+[RANDOM] Hardware RDRAND not present. Using high-entropy fallback PRNG.
+[RTC] Hardware Clock: 2026-10-23 19:12:25 UTC (Epoch: 1792782745)
+[SYSCALL] fast path syscall/sysret enabled, int 0x80 kept as fallback
+[INPUT-CORE] Unified Input Event Subsystem Initialized.
+[PCI-CORE] Bus enumeration complete.
+[VFS] Virtual File System subsystem initialized.
+[PAGECACHE] In-Memory VFS Page Cache Initialized.
+[KERNEL] VFS and RAMFS Root '/' Subsystem Initialized.
+[USER] User and security subsystem initialized (root, default).
+[KERNEL] Multithreading &amp; O(1) Scheduler Subsystem Initialized.
+[EVDEV] Linux Event Device &amp; PS/2 Mousedev Subsystem Ready.
+[UDEV] Kernel Device Manager and Uevent Subsystem Initialized.
+[UDEV-HOTPLUG] add@/devices/virtual/input/input/event0 ACTION=add DEVNAME=input/event0 MAJOR=13 MINOR=64
+[UDEV-HOTPLUG] add@/devices/virtual/input/input/event1 ACTION=add DEVNAME=input/event1 MAJOR=13 MINOR=65
+[UDEV-HOTPLUG] add@/devices/virtual/input/input/mice ACTION=add DEVNAME=input/mice MAJOR=13 MINOR=63
+[PTY] Pseudo-terminal subsystem initialized (max 32 pairs).
+[DEVFS] Nodes /dev/input/event0, event1, mice, /dev/mouse, /dev/ptmx, /dev/pts active.
+[EXT2] Initializing EXT2 file system driver...
+[NVME] Scanning PCI bus topology for NVMe storage...
+[NVME] MATCH FOUND! NVMe Controller located.
+[NVME] Namespace 1 Active: 262144 sectors (128 MB, sector size: 512)
+[NVME SUCCESS] NVMe Controller and IO Queues fully initialized.
+[STORAGE] Mounted NVMe FAT32 at '/drives/fat32_nvme'
+[EXT2 ERROR] Invalid EXT2 magic number!
+[STORAGE] Mounted NVMe EXT2 at '/drives/ext2_nvme'
+[ISO9660] Initializing ISO9660 Filesystem Engine...
+[ISO9660] Volume successfully mounted.
+[RAMFS] LiveCD media detected. Mounting /cdrom and populating /bin...
+[PSF2] Default kernel font loaded successfully.
+[KERNEL] PSF2 Font loaded from ISO9660.
+[AC97] Audio ready: /dev/dsp, 16-bit stereo, 44100 Hz
+[RTL8139] Matching device detected on PCI bus.
+[RTL8139] Device active (eth0) MAC: 52:54:00:12:34:56
+[XHCI-DIAG] Primary HW: MaxSlots=64 | MaxPorts=8 | CSZ=32-bit | AC64=1
+[XHCI-DIAG] Scanning ports on primary hardware...
+[XHCI-DIAG] Port 5: Device Connected. Resetting port...
+[XHCI-DIAG] Port 5 Reset Success. Post-Reset Speed ID: 3
+[[XHCI-EVENT] Cmd Complete: Type=33 | Slot=1 | Code=1
+[XHCI-STEP] Posting ADDRESS_DEVICE for Slot 1 (Port 5, Speed: 3)...
+[XHCI-EVENT] Cmd Complete: Type=33 | Slot=1 | Code=1
+[XHCI-STEP] Posting CONFIG_ENDPOINT for Slot 1...
+[XHCI-EVENT] Cmd Complete: Type=33 | Slot=1 | Code=1
+[XHCI-STEP] Slot 1 Configured! Setting Configuration...
+XHCI-DIAG] Port 6: Device Connected. Resetting port...
+[XHCI-DIAG] Port 6 Reset Success. Post-Reset Speed ID: 3
+[XHCI] Primary Hardware Contr[XHCI-EVENT] Cmd Complete: Type=33 | Slot=2 | Code=1
+[XHCI-STEP] Posting ADDRESS_DEVICE for Slot 2 (Port 6, Speed: 3)...
+[XHCI-EVENT] Cmd Complete: Type=33 | Slot=2 | Code=1
+[XHCI-STEP] Posting CONFIG_ENDPOINT for Slot 2...
+[XHCI-EVENT] Cmd Complete: Type=33 | Slot=2 | Code=1
+[XHCI-STEP] Slot 2 Configured! Setting Configuration...
+oller Active.
+[FONTCACHE] resident font already loaded, keeping it.
+[STORAGE] Mounted toolchain /lib from /cdrom/lib
+[STORAGE] Mounted toolchain /usr/include from /cdrom/usr/include
+[PAGECACHE] prewarm: 6 files, 3451267 bytes from /cdrom/CACHE/PRELOAD.TXT
+[PROCFS] Mounted /proc.
+
+Welcome to EquantOS!</code></pre>
                     </div>
                 </div>
             </article>
 
-            <!-- 2. ZENITH PLAYER (ORIGINAL ELECTRON) WITH LIVE EMBED TRIGGER -->
+            <!-- 2. ZENITH PLAYER (CLASSIC) WITH LIVE EMBED TRIGGER -->
             <article class="product-card" id="zenith-original">
                 <div class="product-info">
                     <div class="product-meta">
-                        <span class="badge-mint">DESKTOP MEDIA</span>
+                        <span class="badge-pink">[LIVE DEMO]</span>
                         <span class="product-category">AUDIO ENGINE</span>
                     </div>
-                    <h3 class="product-heading">Zenith Player (Classic)</h3>
+                    <h3 class="product-heading">ZENITH PLAYER (CLASSIC)</h3>
                     <p class="product-text">
                         Hardware-accelerated desktop audio engine featuring real-time parametric equalization, dynamic speed and pitch modulators, reactive spectrogram and multi-format audio decoders.
                     </p>
                     <ul class="spec-bullets">
-                        <li><span>Audio Core</span><code>Web Audio / DSP Pipeline</code></li>
-                        <li><span>Equalizer</span><code>7-Band Biquad Filters</code></li>
-                        <li><span>Integration</span><code>Local Directory Streamer</code></li>
+                        <li><span>AUDIO CORE</span><code>Web Audio / DSP Pipeline</code></li>
+                        <li><span>EQUALIZER</span><code>7-Band Biquad Filters</code></li>
+                        <li><span>INTEGRATION</span><code>Local Directory Streamer</code></li>
                     </ul>
                     <div class="product-actions">
-                        <button class="btn-accent launch-zenith-trigger" id="launchZenithBtn">
-                            Launch In-Browser ↗
+                        <button class="btn-primary launch-zenith-trigger" id="launchZenithBtn">
+                            LAUNCH IN-BROWSER ↗
                         </button>
-                        <a href="https://github.com/ewasion137/ZenithPlayer" target="_blank" rel="noopener" class="btn-secondary">GitHub ↗</a>
+                        <a href="https://github.com/ewasion137/ZenithPlayer" target="_blank" rel="noopener" class="btn-secondary">GITHUB ↗</a>
                     </div>
                 </div>
                 <div class="product-visual">
@@ -157,13 +203,13 @@
                         <div class="tilt-card" data-tilt>
                             <img src="scr/zenithplrELECTRON.jpg" alt="Zenith Player Interface" class="visual-img inspectable-img" data-full="scr/zenithplrELECTRON.jpg">
                             <div class="tilt-overlay">
-                                <span class="tilt-badge">Click to Enlarge</span>
+                                <span class="tilt-badge">[INSPECT]</span>
                             </div>
                         </div>
                     </div>
                     <div class="visual-caption-row">
-                        <span class="caption-text">Zenith Player (Electron Core)</span>
-                        <button class="caption-action launch-zenith-trigger">Launch Live Player</button>
+                        <span class="caption-text">// ZENITH PLAYER (ELECTRON CORE)</span>
+                        <button class="caption-action launch-zenith-trigger">[LAUNCH ENGINE]</button>
                     </div>
                 </div>
             </article>
@@ -172,20 +218,20 @@
             <article class="product-card">
                 <div class="product-info">
                     <div class="product-meta">
-                        <span class="badge-warn">BETA</span>
-                        <span class="product-category">NATIVE C++ REMAKE</span>
+                        <span class="badge-pink">[NATIVE BETA]</span>
+                        <span class="product-category">C++ AUDIO SUITE</span>
                     </div>
-                    <h3 class="product-heading">ZenithPlayer-Deluxe</h3>
+                    <h3 class="product-heading">ZENITHPLAYER-DELUXE</h3>
                     <p class="product-text">
                         High-performance C++ remake of the original Electron ZenithPlayer desktop suite. Re-engineered from the ground up utilizing MinAudio for minimal audio latency and programmable Lua runtime scripts for UI theming.
                     </p>
                     <ul class="spec-bullets">
-                        <li><span>Core Language</span><code>Modern C++ (20/23)</code></li>
-                        <li><span>Audio Backend</span><code>miniaudio Subsystem</code></li>
-                        <li><span>Scripting</span><code>Lua Dynamic Theming</code></li>
+                        <li><span>CORE LANGUAGE</span><code>Modern C++ (20/23)</code></li>
+                        <li><span>AUDIO BACKEND</span><code>miniaudio Subsystem</code></li>
+                        <li><span>SCRIPTING</span><code>Lua Dynamic Theming</code></li>
                     </ul>
                     <div class="product-actions">
-                        <a href="https://github.com/ewasion137" target="_blank" rel="noopener" class="btn-primary">View Deluxe Source ↗</a>
+                        <a href="https://github.com/ewasion137" target="_blank" rel="noopener" class="btn-primary">VIEW DELUXE SOURCE ↗</a>
                     </div>
                 </div>
                 <div class="product-visual">
@@ -193,12 +239,12 @@
                         <div class="tilt-card" data-tilt>
                             <img src="scr/zenithplayerdeluxe.jpg" alt="Zenith Player Deluxe C++ Remake" class="visual-img inspectable-img" data-full="scr/zenithplayerdeluxe.jpg">
                             <div class="tilt-overlay">
-                                <span class="tilt-badge">Click to Enlarge</span>
+                                <span class="tilt-badge">[INSPECT]</span>
                             </div>
                         </div>
                     </div>
                     <div class="visual-caption-row">
-                        <span class="caption-text">ZenithPlayer-Deluxe (MinAudio & Lua Core)</span>
+                        <span class="caption-text">// ZENITHPLAYER-DELUXE (MINAUDIO &amp; LUA CORE)</span>
                     </div>
                 </div>
             </article>
@@ -207,20 +253,20 @@
             <article class="product-card">
                 <div class="product-info">
                     <div class="product-meta">
-                        <span class="badge-mint">GPL v2</span>
-                        <span class="product-category">AMBIENT SOUND ENGINE</span>
+                        <span class="badge-cyan">[ATMOSPHERIC DSP]</span>
+                        <span class="product-category">SOUND ENGINE</span>
                     </div>
-                    <h3 class="product-heading">AmbientSP</h3>
+                    <h3 class="product-heading">AMBIENT SP</h3>
                     <p class="product-text">
                         Ambient sound player built to play seamlessly in the background. Features a multi-channel sound mixer for 18 atmospheric soundscapes, automatic state persistence, frameless UI and complete Windows system tray minimization.
                     </p>
                     <ul class="spec-bullets">
-                        <li><span>Mixer Channels</span><code>18 Simultaneous Tracks</code></li>
-                        <li><span>Persistence</span><code>Auto-Save Mixer State</code></li>
-                        <li><span>Platform</span><code>Windows Tray & Desktop</code></li>
+                        <li><span>MIXER CHANNELS</span><code>18 Simultaneous Tracks</code></li>
+                        <li><span>PERSISTENCE</span><code>Auto-Save Mixer State</code></li>
+                        <li><span>PLATFORM</span><code>Windows Tray &amp; Desktop</code></li>
                     </ul>
                     <div class="product-actions">
-                        <a href="https://github.com/ewasion137" target="_blank" rel="noopener" class="btn-primary">View AmbientSP ↗</a>
+                        <a href="https://github.com/ewasion137" target="_blank" rel="noopener" class="btn-primary">VIEW AMBIENTSP ↗</a>
                     </div>
                 </div>
                 <div class="product-visual">
@@ -228,39 +274,43 @@
                         <div class="tilt-card" data-tilt>
                             <img src="scr/ambientsp.jpg" alt="AmbientSP Interface Preview" class="visual-img inspectable-img" data-full="scr/ambientsp.jpg">
                             <div class="tilt-overlay">
-                                <span class="tilt-badge">Click to Enlarge</span>
+                                <span class="tilt-badge">[INSPECT]</span>
                             </div>
                         </div>
                     </div>
                     <div class="visual-caption-row">
-                        <span class="caption-text">AmbientSP (Multi-Channel Mixer)</span>
+                        <span class="caption-text">// AMBIENTSP (MULTI-CHANNEL MIXER)</span>
                     </div>
                 </div>
             </article>
 
-            <!-- 5. HYPRWIN -->
+            <!-- 5. HYPRWIN (NO MEDIA YET) -->
             <article class="product-card">
                 <div class="product-info">
                     <div class="product-meta">
-                        <span class="badge-neutral">WIN32 RUNTIME</span>
+                        <span class="badge-neutral">[WIN32 RUNTIME]</span>
                         <span class="product-category">WINDOW ENGINE</span>
                     </div>
-                    <h3 class="product-heading">HyprWin</h3>
+                    <h3 class="product-heading">HYPRWIN</h3>
                     <p class="product-text">
                         Dynamic tiling window manager engine bringing Unix Hyprland ergonomics and real-time programmable Lua runtime hooks to Windows NT via Win32 API.
                     </p>
                     <ul class="spec-bullets">
-                        <li><span>Language</span><code>Modern C++ (20/23)</code></li>
-                        <li><span>API Hook</span><code>Win32 Subsystem</code></li>
-                        <li><span>Config Engine</span><code>LuaJIT Runtime</code></li>
+                        <li><span>LANGUAGE</span><code>Modern C++ (20/23)</code></li>
+                        <li><span>API HOOK</span><code>Win32 Subsystem</code></li>
+                        <li><span>CONFIG ENGINE</span><code>LuaJIT Runtime</code></li>
                     </ul>
                     <div class="product-actions">
-                        <a href="https://github.com/ewasion137/HyprWin" target="_blank" rel="noopener" class="btn-primary">Explore HyprWin ↗</a>
+                        <a href="https://github.com/ewasion137/HyprWin" target="_blank" rel="noopener" class="btn-primary">EXPLORE HYPRWIN ↗</a>
                     </div>
                 </div>
                 <div class="product-visual">
-                    <div class="media-frame">
-                        <img src="https://private-user-images.githubusercontent.com/194919296/661494338-eb15378e-6080-4eea-9e3e-4b3a1f0a3a8e.gif?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTE4MzM2NjMsIm5iZiI6MTc5MTgzMzM2MywicGF0aCI6Ii8xOTQ5MTkyOTYvNjYxNDk0MzM4LWViMTUzNzhlLTYwODAtNGVlYS05ZTNlLTRiM2ExZjBhM2E4ZS5naWY_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYxMDEyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MTAxMlQxOTI5MjNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1iM2Q2MWZmY2E3MGQ4ZTlmZWM2MjFlOTI2YzZiMWQ5N2ExY2Q5YzExM2ZkMGQ5Y2M3ZTA3NDZlMGNkZmIxN2ZjJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZnaWYifQ.fvY2YKLCvgUAMVRMeySP73BOEiI86ZtgliqwnHxlt_8" alt="HyprWin Tiling WM Demo" class="visual-img" loading="lazy">
+                    <div class="no-media-frame">
+                        <div class="no-media-box">
+                            <span class="no-media-icon">[ ! ]</span>
+                            <span class="no-media-title">NO MEDIA YET</span>
+                            <span class="no-media-sub">// Win32 Subsystem Demo Recording In Progress</span>
+                        </div>
                     </div>
                 </div>
             </article>
@@ -269,20 +319,20 @@
             <article class="product-card">
                 <div class="product-info">
                     <div class="product-meta">
-                        <span class="badge-neutral">ARCHIVE</span>
+                        <span class="badge-neutral">[ARCHIVE]</span>
                         <span class="product-category">MONOLITHIC KERNEL</span>
                     </div>
-                    <h3 class="product-heading">EquinoxOS</h3>
+                    <h3 class="product-heading">EQUINOX OS</h3>
                     <p class="product-text">
                         Complete production reference monolithic operating system kernel. Implements preemptive round-robin scheduling, multi-layered VFS with EXT2 and FAT32, native AC97 audio and accelerated VESA framebuffers.
                     </p>
                     <ul class="spec-bullets">
-                        <li><span>FileSystem</span><code>EXT2 / FAT32 VFS</code></li>
-                        <li><span>Drivers</span><code>AC97 / VESA Video</code></li>
-                        <li><span>Scheduler</span><code>Preemptive Round-Robin</code></li>
+                        <li><span>FILESYSTEM</span><code>EXT2 / FAT32 VFS</code></li>
+                        <li><span>DRIVERS</span><code>AC97 / VESA Video</code></li>
+                        <li><span>SCHEDULER</span><code>Preemptive Round-Robin</code></li>
                     </ul>
                     <div class="product-actions">
-                        <a href="https://github.com/Equinox-Collective/EquinoxOS" target="_blank" rel="noopener" class="btn-primary">Kernel Source ↗</a>
+                        <a href="https://github.com/Equinox-Collective/EquinoxOS" target="_blank" rel="noopener" class="btn-primary">KERNEL SOURCE ↗</a>
                     </div>
                 </div>
                 <div class="product-visual">
@@ -310,14 +360,14 @@ exec_from_disk("bin/sysgui.elf");</code></pre>
     <section class="section-container" id="fleet">
         <div class="section-header-row">
             <div>
-                <span class="section-label">COMPLETE INVENTORY</span>
-                <h2 class="section-title">Fleet Manifest</h2>
+                <span class="section-label">[02] // FLEET MANIFEST</span>
+                <h2 class="section-title">FLEET MANIFEST</h2>
             </div>
             <div class="manifest-tabs">
-                <button class="pill-tab active" data-filter="all">All [8]</button>
-                <button class="pill-tab" data-filter="kernel">Kernels</button>
-                <button class="pill-tab" data-filter="audio">Audio</button>
-                <button class="pill-tab" data-filter="tooling">Tools</button>
+                <button class="pill-tab active" data-filter="all">ALL [8]</button>
+                <button class="pill-tab" data-filter="kernel">KERNELS</button>
+                <button class="pill-tab" data-filter="audio">AUDIO</button>
+                <button class="pill-tab" data-filter="tooling">TOOLS</button>
             </div>
         </div>
 
@@ -325,11 +375,11 @@ exec_from_disk("bin/sysgui.elf");</code></pre>
             <table class="manifest-table">
                 <thead>
                     <tr>
-                        <th>Identifier</th>
-                        <th>Domain</th>
-                        <th>Stack & Architecture</th>
-                        <th>Status</th>
-                        <th class="text-right">Repository</th>
+                        <th>IDENTIFIER</th>
+                        <th>DOMAIN</th>
+                        <th>STACK &amp; ARCHITECTURE</th>
+                        <th>STATUS</th>
+                        <th class="text-right">REPOSITORY</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -340,8 +390,8 @@ exec_from_disk("bin/sysgui.elf");</code></pre>
                         </td>
                         <td>Kernel System</td>
                         <td><code>C / ASM / Limine</code></td>
-                        <td><span class="badge-mint">Active Dev</span></td>
-                        <td class="text-right"><a href="https://github.com/Equinox-Collective/EquantOS" target="_blank" rel="noopener" class="link-mint">Source ↗</a></td>
+                        <td><span class="badge-cyan">[ACTIVE DEV]</span></td>
+                        <td class="text-right"><a href="https://github.com/Equinox-Collective/EquantOS" target="_blank" rel="noopener" class="link-cyan">SOURCE ↗</a></td>
                     </tr>
                     <tr class="table-row" data-cat="audio">
                         <td class="cell-title">
@@ -350,8 +400,8 @@ exec_from_disk("bin/sysgui.elf");</code></pre>
                         </td>
                         <td>Native Audio</td>
                         <td><code>C++ / miniaudio / Lua</code></td>
-                        <td><span class="badge-warn">Beta</span></td>
-                        <td class="text-right"><a href="https://github.com/ewasion137" target="_blank" rel="noopener" class="link-mint">Source ↗</a></td>
+                        <td><span class="badge-pink">[BETA]</span></td>
+                        <td class="text-right"><a href="https://github.com/ewasion137" target="_blank" rel="noopener" class="link-cyan">SOURCE ↗</a></td>
                     </tr>
                     <tr class="table-row" data-cat="audio">
                         <td class="cell-title">
@@ -360,8 +410,8 @@ exec_from_disk("bin/sysgui.elf");</code></pre>
                         </td>
                         <td>Desktop Audio</td>
                         <td><code>Electron / Web Audio / JS</code></td>
-                        <td><span class="badge-mint">Release</span></td>
-                        <td class="text-right"><a href="https://github.com/ewasion137/ZenithPlayer" target="_blank" rel="noopener" class="link-mint">Source ↗</a></td>
+                        <td><span class="badge-cyan">[RELEASE]</span></td>
+                        <td class="text-right"><a href="https://github.com/ewasion137/ZenithPlayer" target="_blank" rel="noopener" class="link-cyan">SOURCE ↗</a></td>
                     </tr>
                     <tr class="table-row" data-cat="audio">
                         <td class="cell-title">
@@ -370,8 +420,8 @@ exec_from_disk("bin/sysgui.elf");</code></pre>
                         </td>
                         <td>Desktop Audio</td>
                         <td><code>Electron / Node / AudioMixer</code></td>
-                        <td><span class="badge-mint">Active</span></td>
-                        <td class="text-right"><a href="https://github.com/ewasion137" target="_blank" rel="noopener" class="link-mint">Source ↗</a></td>
+                        <td><span class="badge-cyan">[ACTIVE]</span></td>
+                        <td class="text-right"><a href="https://github.com/ewasion137" target="_blank" rel="noopener" class="link-cyan">SOURCE ↗</a></td>
                     </tr>
                     <tr class="table-row" data-cat="tooling">
                         <td class="cell-title">
@@ -380,18 +430,18 @@ exec_from_disk("bin/sysgui.elf");</code></pre>
                         </td>
                         <td>Desktop Engine</td>
                         <td><code>C++ / Win32 / LuaJIT</code></td>
-                        <td><span class="badge-neutral">Paused</span></td>
-                        <td class="text-right"><a href="https://github.com/ewasion137/HyprWin" target="_blank" rel="noopener" class="link-mint">Source ↗</a></td>
+                        <td><span class="badge-neutral">[PAUSED]</span></td>
+                        <td class="text-right"><a href="https://github.com/ewasion137/HyprWin" target="_blank" rel="noopener" class="link-cyan">SOURCE ↗</a></td>
                     </tr>
                     <tr class="table-row" data-cat="kernel">
                         <td class="cell-title">
                             <span class="title-bold">EquinoxOS</span>
-                            <span class="title-sub">Monolithic kernel with EXT2/FAT32, VESA & AC97</span>
+                            <span class="title-sub">Monolithic kernel with EXT2/FAT32, VESA &amp; AC97</span>
                         </td>
                         <td>Kernel System</td>
                         <td><code>C / ASM / Limine / VFS</code></td>
-                        <td><span class="badge-neutral">Archive</span></td>
-                        <td class="text-right"><a href="https://github.com/Equinox-Collective/EquinoxOS" target="_blank" rel="noopener" class="link-mint">Source ↗</a></td>
+                        <td><span class="badge-neutral">[ARCHIVE]</span></td>
+                        <td class="text-right"><a href="https://github.com/Equinox-Collective/EquinoxOS" target="_blank" rel="noopener" class="link-cyan">SOURCE ↗</a></td>
                     </tr>
                     <tr class="table-row" data-cat="tooling">
                         <td class="cell-title">
@@ -400,8 +450,8 @@ exec_from_disk("bin/sysgui.elf");</code></pre>
                         </td>
                         <td>System Tooling</td>
                         <td><code>C++ / Qt / PE / ELF</code></td>
-                        <td><span class="badge-neutral">Active</span></td>
-                        <td class="text-right"><a href="https://github.com/igmunv/cremniy" target="_blank" rel="noopener" class="link-mint">Source ↗</a></td>
+                        <td><span class="badge-neutral">[ACTIVE]</span></td>
+                        <td class="text-right"><a href="https://github.com/igmunv/cremniy" target="_blank" rel="noopener" class="link-cyan">SOURCE ↗</a></td>
                     </tr>
                     <tr class="table-row" data-cat="tooling">
                         <td class="cell-title">
@@ -410,8 +460,8 @@ exec_from_disk("bin/sysgui.elf");</code></pre>
                         </td>
                         <td>CLI Utility</td>
                         <td><code>ANSI C / Win32 CLI</code></td>
-                        <td><span class="badge-neutral">Complete</span></td>
-                        <td class="text-right"><a href="https://github.com/ewasion137/winfortune" target="_blank" rel="noopener" class="link-mint">Source ↗</a></td>
+                        <td><span class="badge-neutral">[COMPLETE]</span></td>
+                        <td class="text-right"><a href="https://github.com/ewasion137/winfortune" target="_blank" rel="noopener" class="link-cyan">SOURCE ↗</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -422,8 +472,8 @@ exec_from_disk("bin/sysgui.elf");</code></pre>
     <section class="section-container" id="telemetry">
         <div class="section-header-row">
             <div>
-                <span class="section-label">FIRMWARE SPECIFICATION</span>
-                <h2 class="section-title">Source Telemetry</h2>
+                <span class="section-label">[03] // SYSTEM TELEMETRY</span>
+                <h2 class="section-title">SOURCE TELEMETRY</h2>
             </div>
             <div class="manifest-tabs">
                 <button class="pill-tab active" id="tabEquinox">EquinoxOS (kernel.c)</button>
@@ -434,7 +484,7 @@ exec_from_disk("bin/sysgui.elf");</code></pre>
         <div class="code-panel">
             <div class="code-panel-bar">
                 <span class="code-file" id="snippetFilename">EquinoxOS/kernel.c</span>
-                <span class="code-badge">x86_64 Higher-Half</span>
+                <span class="code-badge">x86_64 HIGHER-HALF</span>
             </div>
             <div class="code-panel-body">
                 <pre><code id="snippetContent"><span class="tok-c">/* EquinoxOS Monolithic Kernel Entry Sequence */</span>
@@ -489,16 +539,16 @@ exec_from_disk("bin/sysgui.elf");</code></pre>
             <div class="footer-col">
                 <span class="footer-heading">CHANNELS</span>
                 <ul class="footer-links">
-                    <li><a href="https://github.com/ewasion137" target="_blank" rel="noopener">GitHub</a></li>
-                    <li><a href="https://github.com/Equinox-Collective" target="_blank" rel="noopener">Equinox Collective</a></li>
-                    <li><a href="https://ko-fi.com/ewasion" target="_blank" rel="noopener">Ko-fi</a></li>
-                    <li><a href="mailto:addntim@gmail.com">Direct Email</a></li>
+                    <li><a href="https://github.com/ewasion137" target="_blank" rel="noopener">GitHub ↗</a></li>
+                    <li><a href="https://github.com/Equinox-Collective" target="_blank" rel="noopener">Equinox Collective ↗</a></li>
+                    <li><a href="https://ko-fi.com/ewasion" target="_blank" rel="noopener">Ko-fi ↗</a></li>
+                    <li><a href="mailto:addntim@gmail.com">Direct Email ↗</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <span>EWASION137 (c) 2026. All rights reserved.</span>
-            <span>Mintlify Clean Spec</span>
+            <span>EWASION137 // ARCHITECT (C) 2026. ALL RIGHTS RESERVED.</span>
+            <span>BLACK BRUTALISM SPEC // SYS_V1</span>
         </div>
     </footer>
 
@@ -506,24 +556,23 @@ exec_from_disk("bin/sysgui.elf");</code></pre>
     <div id="imageLightbox" class="lightbox-modal">
         <div class="lightbox-backdrop"></div>
         <div class="lightbox-container">
-            <button class="lightbox-close" id="lightboxCloseBtn" title="Close (Esc)">&times;</button>
+            <button class="lightbox-close" id="lightboxCloseBtn" title="Close (Esc)">[X]</button>
             <img src="" alt="Enlarged Preview" id="lightboxImage" class="lightbox-img">
         </div>
     </div>
 
-    <!-- MODAL: ZENITH PLAYER LAUNCH MODAL (UNLOADED BY DEFAULT) -->
+    <!-- MODAL: ZENITH PLAYER LAUNCH MODAL -->
     <div id="zenithPlayerModal" class="player-overlay-modal">
         <div class="player-modal-backdrop" id="zenithModalBackdrop"></div>
         <div class="player-window-stage" id="zenithWindowStage">
             <div class="player-top-header">
                 <div class="player-header-info">
                     <span class="player-dot"></span>
-                    <span class="player-header-title">Zenith Player Web Instance</span>
-                    <span class="player-header-tag">Live Engine</span>
+                    <span class="player-header-title">ZENITH PLAYER // WEB INSTANCE</span>
+                    <span class="player-header-tag">[LIVE]</span>
                 </div>
-                <div class="player-header-actions">
-                    <button class="player-btn-minimize" id="zenithMinimizeBtn" title="Minimize / Restore">&minus;</button>
-                    <button class="player-btn-close" id="zenithCloseBtn" title="Close Player">&times;</button>
+                    <button class="player-btn-minimize" id="zenithMinimizeBtn" title="Minimize / Restore">_</button>
+                    <button class="player-btn-close" id="zenithCloseBtn" title="Close Player">[X]</button>
                 </div>
             </div>
             <div class="player-iframe-holder" id="playerIframeHolder">
@@ -532,6 +581,32 @@ exec_from_disk("bin/sysgui.elf");</code></pre>
         </div>
     </div>
 
+    <!-- MODAL: BRUTALIST ASCII VAULT (RANDOM NICKNAME GENERATOR) -->
+    <div id="asciiModal" class="ascii-overlay-modal" role="dialog" aria-modal="true">
+        <div class="ascii-modal-backdrop" id="asciiModalBackdrop"></div>
+        <div class="ascii-window-stage" id="asciiWindowStage">
+            <div class="ascii-top-header">
+                <div class="ascii-header-info">
+                    <span class="ascii-header-title">EWASION137 // ASCII VAULT</span>
+                    <span class="ascii-font-badge" id="asciiFontBadge">FONT: 3-D [01/106]</span>
+                </div>
+                <div class="ascii-header-actions">
+                    <button class="ascii-btn-reroll" id="asciiRerollBtn" title="Reroll random font">REROLL [SPACE] ⟳</button>
+                    <button class="ascii-btn-close" id="asciiCloseBtn" title="Close (Esc)">[X]</button>
+                </div>
+            </div>
+            <div class="ascii-body-container" id="asciiBodyContainer" title="Click anywhere to reroll">
+                <pre class="ascii-banner-display" id="asciiBannerDisplay"></pre>
+            </div>
+            <div class="ascii-bottom-bar">
+                <span>[CLICK BANNER OR PRESS SPACE TO RANDOMIZE]</span>
+                <span id="asciiIndexCount">106 VARIANTS LOADED</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ASCII VAULT DATA & CONTROLLER -->
+    <script src="scr/ascii-data.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
