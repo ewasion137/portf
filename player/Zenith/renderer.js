@@ -164,18 +164,26 @@ document.addEventListener('DOMContentLoaded', () => {
     nextBtn.addEventListener('click', playNextTrack);
 
     const minBtn = document.getElementById('win-min');
-    minBtn.addEventListener('click', () => window.electronAPI.minimize('taskbar'));
-    minBtn.addEventListener('contextmenu', (e) => {
-        e.preventDefault();
-        window.electronAPI.minimize('tray');
-    });
+    const maxBtn = document.getElementById('win-max');
+    const closeBtn = document.getElementById('win-close');
 
-    document.getElementById('win-max').addEventListener('click', () => {
-        document.body.classList.add('hypr-pop');
-        window.electronAPI.maximize();
-        setTimeout(() => document.body.classList.remove('hypr-pop'), 800);
-    });
-    document.getElementById('win-close').addEventListener('click', () => window.electronAPI.close());
+    if (minBtn) {
+        minBtn.addEventListener('click', () => window.electronAPI.minimize());
+    }
+
+    if (maxBtn) {
+        maxBtn.addEventListener('click', () => {
+            window.electronAPI.maximize();
+            setTimeout(() => {
+                updateCanvasSizeCache();
+                if (currentTrackBuffer) renderWaveform();
+            }, 300);
+        });
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => window.electronAPI.close());
+    }
 
     window.electronAPI.onGlobalCommand((cmd) => {
         if (cmd === 'play-pause') {
@@ -681,7 +689,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 spectrogramCtx.clearRect(0, 0, specCanvasW * dpr, specCanvasH * dpr);
             }
         }
-        
+
         // ВЫРУБАЕМ/ВКЛЮЧАЕМ ВСЕ JS-ЭФФЕКТЫ ТЕМ:
         if (window.ThemeFX) {
             window.ThemeFX.setEnabled(visualsEnabled);
@@ -1008,7 +1016,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (progressX > 0 && visualsEnabled) {
             waveformCtx.save();
             waveformCtx.beginPath();
-            
+
             // Верхняя огибающая волны
             waveformCtx.moveTo(0, waveCanvasH / 2);
             for (let i = 0; i < totalBars; i++) {
