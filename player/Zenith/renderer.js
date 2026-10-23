@@ -114,16 +114,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- EQ Generation ---
+    /* Fix vertical range orientation and coordinates */
     eqFilters.forEach((filter, i) => {
         const bandEl = document.createElement('div');
         bandEl.className = 'eq-band';
         const label = document.createElement('label');
         const freq = eqFrequencies[i];
         label.textContent = freq >= 1000 ? `${freq / 1000}k` : freq;
+
         const slider = document.createElement('input');
-        slider.type = 'range'; slider.min = -12; slider.max = 12; slider.value = 0; slider.step = 0.1;
+        slider.type = 'range';
+        slider.min = -12;
+        slider.max = 12;
+        slider.value = 0;
+        slider.step = 0.1;
+
+        /* Enforce vertical orientation for browser mouse coordinate engines */
+        slider.setAttribute('orient', 'vertical');
+        slider.setAttribute('aria-orientation', 'vertical');
+        slider.style.writingMode = 'vertical-lr';
+        slider.style.direction = 'rtl';
+
         const numInput = document.createElement('input');
-        numInput.type = 'number'; numInput.min = -12; numInput.max = 12; numInput.value = 0; numInput.step = 0.1;
+        numInput.type = 'number';
+        numInput.min = -12;
+        numInput.max = 12;
+        numInput.value = 0;
+        numInput.step = 0.1;
 
         const updateGain = (val) => {
             const num = Number(val);
@@ -132,6 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
             numInput.value = num;
             if (!isApplyingSettings) onSettingsChange();
         };
+
         slider.addEventListener('input', (e) => updateGain(e.target.value));
         numInput.addEventListener('change', (e) => updateGain(e.target.value));
         bandEl.append(label, slider, numInput);
