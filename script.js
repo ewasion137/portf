@@ -579,4 +579,61 @@ document.addEventListener('DOMContentLoaded', () => {
     if (asciiBodyContainer) asciiBodyContainer.addEventListener('click', () => {
         window.rerollAscii();
     });
+
+        /* ======================================================================
+       9. NEWSPAPER CYLINDER ROLL EFFECT (СКРОЛЛ-РУЛОН В ТРУБУ)
+       ====================================================================== */
+    const rollElements = document.querySelectorAll(
+        '.hero-container, .section-header, .section-header-row, .product-card, .table-card, .code-panel, .footer-grid'
+    );
+
+    let isTicking = false;
+
+    function updateCylinderRoll() {
+        const topNavHeight = 64; // Высота шапки
+        // Срабатывает ТОЛЬКО когда верх блока почти коснулся шапки (+20px)
+        const rollThreshold = topNavHeight + 20; 
+        const rollDepth = 180; // Зона полного сворачивания в трубу
+
+        rollElements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+
+            // Если элемент еще читается на экране — он на 100% плоский и без искажений
+            if (rect.top >= rollThreshold) {
+                if (el.style.transform !== '') {
+                    el.style.transform = '';
+                    el.style.opacity = '';
+                    el.style.filter = '';
+                }
+                return;
+            }
+
+            // Начинаем заворачивать только когда уходит под шапку
+            const factor = Math.min(Math.max((rollThreshold - rect.top) / rollDepth, 0), 1.4);
+
+            const rotateX = factor * 26;          // Плавный угол назад
+            const translateZ = -factor * 90;      // Уход вглубь
+            const translateY = factor * 10;       // Компенсация дуги
+            const scale = Math.max(0.92, 1 - factor * 0.05);
+            const opacity = Math.max(0.1, 1 - factor * 0.7);
+
+            el.style.transformOrigin = '50% 0%';
+            el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) translateZ(${translateZ}px) translateY(${translateY}px) scale(${scale})`;
+            el.style.opacity = opacity;
+            el.style.filter = `brightness(${Math.max(0.25, 1 - factor * 0.7)})`;
+        });
+
+        isTicking = false;
+    }
+
+    function onScrollRoll() {
+        if (!isTicking) {
+            window.requestAnimationFrame(updateCylinderRoll);
+            isTicking = true;
+        }
+    }
+
+    window.addEventListener('scroll', onScrollRoll, { passive: true });
+    window.addEventListener('resize', onScrollRoll);
+    updateCylinderRoll();
 });

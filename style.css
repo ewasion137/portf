@@ -2,6 +2,7 @@
    BLACK BRUTALISM DESIGN SYSTEM — EWASION137
    Pure Black (#000000) | Hard 0px Edges | High-Contrast Monochrome (#ffffff)
    Raw Systems Architecture | Technical Monospace | Zero Soft Glows
+   Cylinder Newspaper Roll Perspective Engine
    ========================================================================== */
 
 :root {
@@ -46,13 +47,22 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    border-radius: 0 !important; /* STRICT BRUTALISM: ZERO ROUNDED CORNERS */
+    border-radius: 0 !important; /* STRICT BRUTALISM */
 }
 
 html {
     scroll-behavior: smooth;
     background-color: var(--color-black);
     color: var(--color-white);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
 }
 
 body {
@@ -64,10 +74,10 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
-    /* Subtle industrial grid lines */
+    /* Subtle industrial grid */
     background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+        linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
     background-size: 64px 64px;
     background-attachment: fixed;
 }
@@ -78,22 +88,23 @@ body {
 }
 
 /* ==========================================================================
-   CROSS-BROWSER SCROLLBAR CONFIGURATION
+   CYLINDER NEWSPAPER ROLL PERSPECTIVE ENGINE
    ========================================================================== */
-html {
-    scrollbar-width: none; /* Firefox: hide ugly default scrollbar */
-    -ms-overflow-style: none; /* IE / Edge */
+/* Элементы, участвующие в закрутке рулона */
+.hero-container,
+.section-header,
+.product-card,
+.table-card,
+.code-panel,
+.section-header-row,
+.footer-grid {
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    will-change: transform, opacity, filter;
+    transition: transform 0.06s ease-out, opacity 0.06s ease-out, filter 0.06s ease-out;
 }
 
-/* Hide native browser scrollbar on Chrome, Edge, Safari, Brave */
-html::-webkit-scrollbar,
-body::-webkit-scrollbar {
-    display: none;
-    width: 0;
-    height: 0;
-}
-
-/* Specific slim scrollbars for internal scrollable pre and tables */
+/* Scrollbars for internal pre & tables */
 pre::-webkit-scrollbar,
 .table-card::-webkit-scrollbar {
     width: 4px;
@@ -113,7 +124,7 @@ pre::-webkit-scrollbar-thumb:hover,
 }
 
 /* ==========================================================================
-   CLEAN CUSTOM BRUTALIST SIDE SCROLL SLIDER
+   CUSTOM BRUTALIST SIDE SCROLL SLIDER
    ========================================================================== */
 .side-scroll-track {
     position: fixed;
@@ -198,8 +209,10 @@ pre::-webkit-scrollbar-thumb:hover,
     }
 }
 
-/* TYPOGRAPHY */
-h1, h2, h3, h4, .brand-name, .section-label, .btn-primary, .btn-secondary, .btn-accent, .pill-tab, .mockup-title, .code-file {
+/* ==========================================================================
+   TYPOGRAPHY
+   ========================================================================== */
+h1, h2, h3, h4, .brand-name, .section-label, .btn-primary, .btn-secondary, .btn-accent, .pill-tab, .code-file {
     font-family: var(--font-mono);
     text-transform: uppercase;
     letter-spacing: -0.01em;
@@ -220,7 +233,7 @@ code {
 }
 
 /* ==========================================================================
-   BUTTONS (BRUTALIST INVERSION & SHARP OFFSETS)
+   BUTTONS
    ========================================================================== */
 .btn-primary {
     display: inline-flex;
@@ -337,6 +350,13 @@ code {
     gap: 12px;
     text-decoration: none;
     color: #ffffff;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.1s ease;
+}
+
+.brand-link:active {
+    transform: scale(0.97);
 }
 
 .brand-name {
@@ -427,14 +447,6 @@ code {
     margin-bottom: 22px;
 }
 
-.gradient-text {
-    background: none;
-    -webkit-text-fill-color: initial;
-    color: #ffffff;
-    border-bottom: 4px solid #ffffff;
-    display: inline;
-}
-
 .hero-subtitle {
     font-family: var(--font-sans);
     font-size: 18px;
@@ -502,7 +514,7 @@ code {
 }
 
 /* ==========================================================================
-   PRODUCT CARDS (MONOLITHIC BLOCKS)
+   PRODUCT CARDS
    ========================================================================== */
 .product-grid {
     display: flex;
@@ -518,7 +530,7 @@ code {
     background: var(--color-surface-1);
     border: 2px solid var(--color-border);
     padding: 40px;
-    transition: all 0.15s ease;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
     overflow: hidden;
 }
 
@@ -536,7 +548,6 @@ code {
 .product-card:hover {
     border-color: #ffffff;
     box-shadow: var(--brutal-shadow);
-    transform: translate(-3px, -3px);
 }
 
 .product-meta {
@@ -546,8 +557,8 @@ code {
     margin-bottom: 16px;
 }
 
-/* BRUTALIST BADGES */
-.badge-cyan, .badge-pink, .badge-warn, .badge-neutral, .badge-mint {
+/* Badges */
+.badge-cyan, .badge-pink, .badge-neutral {
     font-family: var(--font-mono);
     font-size: 11px;
     font-weight: 700;
@@ -629,7 +640,7 @@ code {
     flex-wrap: wrap;
 }
 
-/* TILT SCREENSHOT CONTAINER & LIGHTBOX TRIGGER */
+/* Tilt screenshot & inspector trigger */
 .tilt-viewport {
     width: 100%;
 }
@@ -665,7 +676,7 @@ code {
     align-items: center;
     justify-content: center;
     transition: opacity 0.15s ease;
-    pointer-events: none; /* Allows click to reach card/img */
+    pointer-events: none;
 }
 
 .tilt-card:hover .tilt-overlay {
@@ -714,7 +725,7 @@ code {
     background: #222222;
 }
 
-/* NO MEDIA YET FRAME (FOR HYPRWIN) */
+/* No media frame */
 .no-media-frame {
     border: 2px dashed var(--color-border-strong);
     background: #050505;
@@ -759,7 +770,7 @@ code {
     color: var(--color-ink-subtle);
 }
 
-/* TERMINAL CARD & REALISTIC LOG VIEWER */
+/* Terminal logs */
 .terminal-card {
     background: #000000;
     border: 2px solid var(--color-border);
@@ -804,11 +815,6 @@ code {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
-}
-
-.media-frame {
-    border: 2px solid var(--color-border);
-    background: #000000;
 }
 
 /* ==========================================================================
@@ -900,7 +906,7 @@ code {
     text-align: right;
 }
 
-.link-cyan, .link-mint {
+.link-cyan {
     font-family: var(--font-mono);
     font-size: 12px;
     font-weight: 700;
@@ -909,7 +915,7 @@ code {
     text-transform: uppercase;
 }
 
-.link-cyan:hover, .link-mint:hover {
+.link-cyan:hover {
     background: #ffffff;
     color: #000000;
     text-decoration: none;
@@ -960,7 +966,6 @@ code {
     background: #050505;
 }
 
-/* High-contrast Monochrome Syntax */
 .tok-k { color: #ffffff; font-weight: 800; text-decoration: underline; }
 .tok-fn { color: #ffffff; font-weight: 700; }
 .tok-c { color: #666666; font-style: italic; }
@@ -1033,9 +1038,9 @@ code {
 }
 
 /* ==========================================================================
-   MODALS (BRUTALIST OVERLAYS & LIGHTBOX)
+   MODALS (LIGHTBOX, PLAYER, ASCII VAULT)
    ========================================================================== */
-.lightbox-modal, .player-overlay-modal {
+.lightbox-modal, .player-overlay-modal, .ascii-overlay-modal {
     position: fixed;
     inset: 0;
     z-index: 100000;
@@ -1045,11 +1050,11 @@ code {
     padding: 24px;
 }
 
-.lightbox-modal.active, .player-overlay-modal.active {
+.lightbox-modal.active, .player-overlay-modal.active, .ascii-overlay-modal.active {
     display: flex !important;
 }
 
-.lightbox-backdrop, .player-modal-backdrop {
+.lightbox-backdrop, .player-modal-backdrop, .ascii-modal-backdrop {
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.94);
@@ -1105,7 +1110,7 @@ code {
     border-color: #ffffff;
 }
 
-/* ZENITH MODAL STAGE */
+/* Zenith Player Modal */
 .player-window-stage {
     position: relative;
     width: 1100px;
@@ -1166,12 +1171,6 @@ code {
     padding: 2px 6px;
 }
 
-.player-header-actions {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
 .player-btn-minimize, .player-btn-close {
     width: 28px;
     height: 28px;
@@ -1196,6 +1195,7 @@ code {
     flex: 1;
     width: 100%;
     height: 100%;
+    min-height: 0;
     background: #000000;
 }
 
@@ -1206,50 +1206,7 @@ code {
     display: block;
 }
 
-/* ==========================================================================
-   BACKGROUND 0101 ELECTRIC NETWORK CANVAS
-   ========================================================================== */
-.bg-binary-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    z-index: 0;
-    display: block;
-}
-
-/* Ensure foreground sections sit cleanly above the canvas */
-.top-nav, .hero-band, .section-container, .site-footer {
-    position: relative;
-    z-index: 1;
-}
-
-/* ==========================================================================
-   BRUTALIST ASCII VAULT MODAL
-   ========================================================================== */
-.ascii-overlay-modal {
-    position: fixed;
-    inset: 0;
-    z-index: 100000;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-}
-
-.ascii-overlay-modal.active {
-    display: flex !important;
-}
-
-.ascii-modal-backdrop {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.94);
-    cursor: pointer;
-}
-
+/* Ascii Vault Modal */
 .ascii-window-stage {
     position: relative;
     width: 1100px;
@@ -1388,15 +1345,21 @@ code {
     flex-shrink: 0;
 }
 
-/* Brand Link click effect */
-.brand-link {
-    cursor: pointer;
-    user-select: none;
-    transition: transform 0.1s ease;
+/* Background Canvas */
+.bg-binary-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    display: block;
 }
 
-.brand-link:active {
-    transform: scale(0.97);
+.top-nav, .hero-band, .section-container, .site-footer {
+    position: relative;
+    z-index: 1;
 }
 
 /* ==========================================================================
