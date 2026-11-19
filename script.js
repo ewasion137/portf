@@ -1,621 +1,76 @@
-/* ==========================================================================
-   EWASION137 CONTROLLER // BRUTAL DARKROOM + WHITE FLUORESCENT SYSTEM
-   ========================================================================== */
+import * as V86Module from "./build/libv86.mjs";
 
-document.addEventListener("DOMContentLoaded", () => {
-    /* 0. Clean up ignition overlay node once animation completes */
-    const ignitionOverlay = document.getElementById("ignitionOverlay");
-    if (ignitionOverlay) {
-        setTimeout(() => {
-            ignitionOverlay.style.display = "none";
-        }, 1400);
+const V86 = V86Module.V86 || V86Module.default;
+
+const monitorFrame = document.getElementById("monitorFrame");
+const screenContainer = document.getElementById("screen_container");
+const bootOverlay = document.getElementById("bootOverlay");
+const bootDetail = document.getElementById("bootDetail");
+const progressFill = document.getElementById("progressFill");
+const vmStatus = document.getElementById("vmStatus");
+const statusLed = document.getElementById("statusLed");
+const btnReboot = document.getElementById("btnReboot");
+const btnFullscreen = document.getElementById("btnFullscreen");
+
+const emulator = new V86({
+    wasm_path: "./build/v86.wasm",
+    memory_size: 128 * 1024 * 1024,
+    vram_size: 8 * 1024 * 1024,
+    cpu_type: "x86_64",
+    machine_type: "i440fx",
+    acpi: true,
+    graphics_adapter: "bochs_vga",
+    screen_container: screenContainer,
+    bios: { url: "./bios/seabios.bin" },
+    vga_bios: { url: "./bios/vgabios.bin" },
+    cdrom: {
+        url: "./equantos.iso",
+        async: false,
+    },
+    autostart: true,
+});
+
+emulator.add_listener("download-progress", (e) => {
+    const name = e.file_name ? e.file_name.split("/").pop() : "asset";
+    if (e.total && e.total > 0) {
+        const pct = Math.min(100, Math.round((e.loaded / e.total) * 100));
+        progressFill.style.width = `${pct}%`;
+        bootDetail.textContent = `Downloading ${name} (${pct}%)...`;
+    } else {
+        const mb = (e.loaded / (1024 * 1024)).toFixed(1);
+        bootDetail.textContent = `Downloading ${name} (${mb} MB)...`;
     }
+});
 
-    /* 1. Contact Copy Action */
-    const copyBtn = document.getElementById("copyContactBtn");
-    if (copyBtn) {
-        copyBtn.addEventListener("click", () => {
-            const email = copyBtn.getAttribute("data-email");
-            const label = copyBtn.querySelector(".btn-label");
-            navigator.clipboard
-                .writeText(email)
-                .then(() => {
-                    const prevText = label
-                        ? label.textContent
-                        : copyBtn.textContent;
-                    if (label) {
-                        label.textContent = "[COPIED_TO_CLIPBOARD]";
-                    }
-                    copyBtn.style.borderColor = "#ffffff";
-                    copyBtn.style.color = "#ffffff";
-                    copyBtn.style.boxShadow =
-                        "0 0 18px rgba(255, 255, 255, 0.45)";
+emulator.add_listener("download-error", (e) => {
+    bootDetail.textContent = `Error loading ${e.file_name || "image"}. Check console (F12).`;
+    vmStatus.textContent = "LOAD ERROR";
+});
 
-                    setTimeout(() => {
-                        if (label) {
-                            label.textContent = prevText;
-                        }
-                        copyBtn.style.borderColor = "";
-                        copyBtn.style.color = "";
-                        copyBtn.style.boxShadow = "";
-                    }, 1600);
-                })
-                .catch((err) => {
-                    console.error("Copy failure:", err);
-                });
-        });
+emulator.add_listener("emulator-started", () => {
+    bootOverlay.classList.add("hidden");
+    statusLed.classList.add("online");
+    vmStatus.textContent = "RUNNING // x86_64 (TYPE IN TERMINAL)";
+    monitorFrame.focus();
+});
+
+monitorFrame.addEventListener("click", () => {
+    monitorFrame.focus();
+    if (typeof emulator.keyboard_set_status === "function") {
+        emulator.keyboard_set_status(true);
     }
+});
 
-    /* 2. Image Lightbox Inspector */
-    const lightbox = document.getElementById("imageLightbox");
-    const lightboxImg = document.getElementById("lightboxImage");
-    const lightboxClose = document.getElementById("lightboxCloseBtn");
-    const backdrop = document.querySelector(".lightbox-backdrop");
+btnReboot.addEventListener("click", () => {
+    emulator.restart();
+    monitorFrame.focus();
+});
 
-    function openLightbox(src) {
-        if (!lightbox || !lightboxImg) return;
-        lightboxImg.src = src;
-        lightbox.classList.add("active");
-        document.body.style.overflow = "hidden";
+btnFullscreen.addEventListener("click", () => {
+    if (!document.fullscreenElement) {
+        monitorFrame.requestFullscreen().catch(() => {});
+    } else {
+        document.exitFullscreen().catch(() => {});
     }
-
-    function closeLightbox() {
-        if (!lightbox) return;
-        lightbox.classList.remove("active");
-        if (lightboxImg) lightboxImg.src = "";
-        document.body.style.overflow = "";
-    }
-
-    document.querySelectorAll(".tilt-card").forEach((card) => {
-        card.addEventListener("click", (e) => {
-            if (e.target.closest("button, a")) return;
-            const img =
-                card.querySelector(".inspectable-img") ||
-                card.querySelector("img");
-            if (img) {
-                const fullSrc = img.getAttribute("data-full") || img.src;
-                openLightbox(fullSrc);
-            }
-        });
-    });
-
-    document.querySelectorAll(".inspectable-img").forEach((img) => {
-        img.addEventListener("click", (e) => {
-            e.stopPropagation();
-            const fullSrc = img.getAttribute("data-full") || img.src;
-            openLightbox(fullSrc);
-        });
-    });
-
-    if (lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
-    if (backdrop) backdrop.addEventListener("click", closeLightbox);
-    if (lightbox) {
-        lightbox.addEventListener("click", (e) => {
-            if (e.target === lightbox || e.target === backdrop) {
-                closeLightbox();
-            }
-        });
-    }
-
-    /* 3. Zenith Player Lazy Launcher */
-    const playerModal = document.getElementById("zenithPlayerModal");
-    const playerHolder = document.getElementById("playerIframeHolder");
-    const zenithBackdrop = document.getElementById("zenithModalBackdrop");
-    const zenithCloseBtn = document.getElementById("zenithCloseBtn");
-    const zenithMinimizeBtn = document.getElementById("zenithMinimizeBtn");
-    const zenithWindowStage = document.getElementById("zenithWindowStage");
-    const launchTriggers = document.querySelectorAll(".launch-zenith-trigger");
-
-    let isPlayerRunning = false;
-
-    function launchPlayer() {
-        if (!playerModal || !playerHolder) return;
-
-        if (!isPlayerRunning) {
-            const playerUrl = new URL(
-                "player/Zenith/form.html",
-                window.location.href,
-            ).href;
-            playerHolder.innerHTML = `<iframe src="${playerUrl}" class="zenith-embedded-frame" id="liveZenithFrame" title="Zenith Player Web Audio Instance"></iframe>`;
-            isPlayerRunning = true;
-        }
-
-        playerModal.classList.add("active");
-        document.body.style.overflow = "hidden";
-    }
-
-    function killPlayer() {
-        if (!playerModal || !playerHolder) return;
-        playerModal.classList.remove("active");
-        document.body.style.overflow = "";
-
-        playerHolder.innerHTML = "";
-        isPlayerRunning = false;
-        if (zenithWindowStage)
-            zenithWindowStage.classList.remove("stage-minimized");
-    }
-
-    launchTriggers.forEach((btn) => {
-        btn.addEventListener("click", (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            launchPlayer();
-        });
-    });
-
-    if (zenithCloseBtn) zenithCloseBtn.addEventListener("click", killPlayer);
-    if (zenithBackdrop) zenithBackdrop.addEventListener("click", killPlayer);
-
-    if (zenithMinimizeBtn) {
-        zenithMinimizeBtn.addEventListener("click", () => {
-            zenithWindowStage.classList.toggle("stage-minimized");
-        });
-    }
-
-    /* Global Escape / Space Key Listener */
-    window.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-            if (lightbox && lightbox.classList.contains("active")) {
-                closeLightbox();
-            } else if (
-                playerModal &&
-                playerModal.classList.contains("active")
-            ) {
-                killPlayer();
-            } else if (typeof closeAsciiModal === "function") {
-                closeAsciiModal();
-            }
-        } else if (e.code === "Space") {
-            const asciiModal = document.getElementById("asciiModal");
-            if (asciiModal && asciiModal.classList.contains("active")) {
-                e.preventDefault();
-                if (typeof rerollAscii === "function") {
-                    rerollAscii();
-                }
-            }
-        }
-    });
-
-    /* 4. Manifest Filter Tabs */
-    const filterTabs = document.querySelectorAll(
-        ".manifest-tabs .ind-tab[data-filter]",
-    );
-    const rows = document.querySelectorAll(".manifest-table .table-row");
-
-    filterTabs.forEach((tab) => {
-        tab.addEventListener("click", () => {
-            filterTabs.forEach((t) => t.classList.remove("active"));
-            tab.classList.add("active");
-
-            const filter = tab.getAttribute("data-filter");
-            rows.forEach((row) => {
-                const matches =
-                    filter === "all" || row.getAttribute("data-cat") === filter;
-                row.style.display = matches ? "" : "none";
-            });
-        });
-    });
-
-    /* 5. Source Telemetry Switcher */
-    const tabEquinox = document.getElementById("tabEquinox");
-    const tabEquant = document.getElementById("tabEquant");
-    const snippetFilename = document.getElementById("snippetFilename");
-    const snippetContent = document.getElementById("snippetContent");
-
-    const snippets = {
-        equinox: {
-            filename: "EquinoxOS/kernel.c",
-            code: `<span class="tok-c">/* EquinoxOS Monolithic Kernel Entry Sequence */</span>
-<span class="tok-k">void</span> <span class="tok-fn">kmain</span>(<span class="tok-k">void</span>) {
-    <span class="tok-fn">serial_init</span>(COM1);
-    <span class="tok-fn">tty_init</span>();
-    <span class="tok-fn">term_print</span>(<span class="tok-s">"=== EquinoxOS Kernel Starting ===\\n"</span>);
-
-    <span class="tok-k">if</span> (hhdm_request.response == NULL) {
-        <span class="tok-fn">term_print</span>(<span class="tok-s">"ERROR: Limine HHDM not available!\\n"</span>);
-        <span class="tok-k">while</span> (1) __asm__(<span class="tok-s">"cli; hlt"</span>);
-    }
-    hhdm_offset = hhdm_request.response->offset;
-
-    <span class="tok-fn">init_gdt</span>();
-    <span class="tok-fn">init_sse</span>();
-    <span class="tok-fn">pmm_init</span>();
-    <span class="tok-fn">vmm_init</span>();
-    <span class="tok-fn">init_heap</span>((uint64_t)<span class="tok-fn">pmm_alloc_continuous</span>(16384) + hhdm_offset, 64 * 1024 * 1024);
-
-    <span class="tok-k">struct</span> limine_framebuffer *fb = framebuffer_request.response->framebuffers[0];
-    <span class="tok-fn">init_vesa</span>((uintptr_t)fb->address, fb->width, fb->height, fb->pitch);
-    <span class="tok-fn">vmm_remap_fb_wc</span>();
-
-    <span class="tok-fn">vfs_init</span>();
-    <span class="tok-fn">ext2_init</span>();
-    <span class="tok-fn">fat32_init</span>();
-    <span class="tok-fn">exec_from_disk</span>(<span class="tok-s">"bin/sysgui.elf"</span>);
-}`,
-        },
-        equant: {
-            filename: "EquantOS/kernel/main.c",
-            code: `<span class="tok-c">/* EquantOS Bootstrap &amp; Userland Jump */</span>
-<span class="tok-k">void</span> <span class="tok-fn">_start</span>(<span class="tok-k">void</span>) {
-    <span class="tok-fn">serial_init</span>(COM1);
-    <span class="tok-fn">enable_fpu_sse</span>();
-    <span class="tok-fn">init_gdt</span>();
-    <span class="tok-fn">init_idt</span>();
-
-    <span class="tok-k">if</span> (hhdm_request.response == NULL || hhdm_request.response->offset == 0) {
-        <span class="tok-fn">PANIC</span>(<span class="tok-s">"Limine HHDM response is NULL!"</span>);
-    }
-    hhdm_offset = hhdm_request.response->offset;
-
-    <span class="tok-fn">pmm_init</span>();
-    <span class="tok-fn">vmm_init</span>();
-    <span class="tok-fn">init_heap</span>(0, 0);
-    <span class="tok-fn">apic_init</span>();
-
-    asm volatile (<span class="tok-s">"sti"</span>);
-    <span class="tok-fn">do_initcalls</span>();
-
-    <span class="tok-fn">tty_print</span>(<span class="tok-s">"\\nWelcome to EquantOS!\\n\\n"</span>);
-    <span class="tok-fn">kernel_start_userland</span>();
-
-    <span class="tok-k">for</span> (;;) {
-        asm volatile (<span class="tok-s">"hlt"</span>);
-    }
-}`,
-        },
-    };
-
-    if (tabEquinox && tabEquant && snippetFilename && snippetContent) {
-        tabEquinox.addEventListener("click", () => {
-            tabEquinox.classList.add("active");
-            tabEquant.classList.remove("active");
-            snippetFilename.textContent = snippets.equinox.filename;
-            snippetContent.innerHTML = snippets.equinox.code;
-        });
-
-        tabEquant.addEventListener("click", () => {
-            tabEquant.classList.add("active");
-            tabEquinox.classList.remove("active");
-            snippetFilename.textContent = snippets.equant.filename;
-            snippetContent.innerHTML = snippets.equant.code;
-        });
-    }
-
-    /* 6. Side Scroll Controller */
-    const sideScrollTrack = document.getElementById("sideScrollTrack");
-    const scrollRail = document.getElementById("scrollRailContainer");
-    const scrollThumb = document.getElementById("scrollSliderThumb");
-    const scrollPctLabel = document.getElementById("scrollPctLabel");
-
-    if (sideScrollTrack && scrollRail && scrollThumb) {
-        let isDragging = false;
-
-        function updateSideSlider() {
-            const scrollY = window.scrollY;
-            const maxScroll =
-                document.documentElement.scrollHeight - window.innerHeight;
-            const pct =
-                maxScroll > 0
-                    ? Math.min(Math.max(scrollY / maxScroll, 0), 1)
-                    : 0;
-
-            const railHeight = scrollRail.clientHeight;
-            const thumbHeight = scrollThumb.clientHeight;
-            const maxTop = Math.max(railHeight - thumbHeight, 0);
-
-            if (!isDragging) {
-                scrollThumb.style.top = `${pct * maxTop}px`;
-            }
-
-            if (scrollPctLabel) {
-                const roundedPct = Math.round(pct * 100);
-                scrollPctLabel.textContent =
-                    roundedPct < 10 ? `0${roundedPct}%` : `${roundedPct}%`;
-            }
-        }
-
-        window.addEventListener("scroll", updateSideSlider, { passive: true });
-        window.addEventListener("resize", updateSideSlider);
-        updateSideSlider();
-
-        scrollRail.addEventListener("click", (e) => {
-            if (e.target === scrollThumb || scrollThumb.contains(e.target))
-                return;
-            const rect = scrollRail.getBoundingClientRect();
-            const clickY = e.clientY - rect.top;
-            const thumbHeight = scrollThumb.clientHeight;
-            const targetTop = clickY - thumbHeight / 2;
-            const maxTop = Math.max(rect.height - thumbHeight, 1);
-            const pct = Math.min(Math.max(targetTop / maxTop, 0), 1);
-            const maxScroll =
-                document.documentElement.scrollHeight - window.innerHeight;
-            window.scrollTo({ top: pct * maxScroll, behavior: "smooth" });
-        });
-
-        scrollThumb.addEventListener("mousedown", (e) => {
-            e.preventDefault();
-            isDragging = true;
-            document.body.style.userSelect = "none";
-
-            const startY = e.clientY;
-            const startThumbTop = parseFloat(scrollThumb.style.top) || 0;
-            const railHeight = scrollRail.clientHeight;
-            const thumbHeight = scrollThumb.clientHeight;
-            const maxTop = Math.max(railHeight - thumbHeight, 0);
-
-            function onMouseMove(moveEvent) {
-                if (!isDragging) return;
-                const deltaY = moveEvent.clientY - startY;
-                const newTop = Math.min(
-                    Math.max(startThumbTop + deltaY, 0),
-                    maxTop,
-                );
-                scrollThumb.style.top = `${newTop}px`;
-
-                const pct = maxTop > 0 ? newTop / maxTop : 0;
-                const maxScroll =
-                    document.documentElement.scrollHeight - window.innerHeight;
-                window.scrollTo({ top: pct * maxScroll });
-
-                if (scrollPctLabel) {
-                    const roundedPct = Math.round(pct * 100);
-                    scrollPctLabel.textContent =
-                        roundedPct < 10 ? `0${roundedPct}%` : `${roundedPct}%`;
-                }
-            }
-
-            function onMouseUp() {
-                isDragging = false;
-                document.body.style.userSelect = "";
-                window.removeEventListener("mousemove", onMouseMove);
-                window.removeEventListener("mouseup", onMouseUp);
-            }
-
-            window.addEventListener("mousemove", onMouseMove);
-            window.addEventListener("mouseup", onMouseUp);
-        });
-    }
-
-    /* 7. Monochrome Binary Matrix Canvas (White Lamp Illumination) */
-    const canvas = document.getElementById("binaryNetworkCanvas");
-    if (canvas) {
-        const ctx = canvas.getContext("2d");
-        let width = (canvas.width = window.innerWidth);
-        let height = (canvas.height = window.innerHeight);
-
-        const isMobile = window.innerWidth < 768;
-        const particleCount = isMobile ? 45 : 95;
-        const particles = [];
-
-        class BinaryNode {
-            constructor() {
-                this.reset(true);
-            }
-
-            reset(initial = false) {
-                this.x = Math.random() * width;
-                this.y = initial
-                    ? Math.random() * height
-                    : Math.random() < 0.5
-                      ? -10
-                      : height + 10;
-                this.vx = (Math.random() - 0.5) * 0.35;
-                this.vy = (Math.random() - 0.5) * 0.35;
-                this.char = Math.random() < 0.5 ? "0" : "1";
-                this.baseAlpha = 0.06;
-                this.energy = 0;
-                this.flipTimer = Math.floor(Math.random() * 240);
-            }
-
-            update(mX, mY, isMouseActive) {
-                this.x += this.vx;
-                this.y += this.vy;
-
-                if (this.x < -20) this.x = width + 20;
-                else if (this.x > width + 20) this.x = -20;
-                if (this.y < -20) this.y = height + 20;
-                else if (this.y > height + 20) this.y = -20;
-
-                if (++this.flipTimer > 280) {
-                    this.char = this.char === "0" ? "1" : "0";
-                    this.flipTimer = 0;
-                }
-
-                if (isMouseActive) {
-                    const dx = mX - this.x;
-                    const dy = mY - this.y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < 110) {
-                        const directPower = Math.pow((110 - dist) / 110, 1.2);
-                        this.energy = Math.max(this.energy, directPower);
-                    }
-                }
-
-                this.energy *= 0.94;
-            }
-
-            draw(c) {
-                const alpha = Math.min(
-                    this.baseAlpha + (0.85 - this.baseAlpha) * this.energy,
-                    0.9,
-                );
-                c.font = '12px "IBM Plex Mono", monospace';
-                c.textAlign = "center";
-                c.textBaseline = "middle";
-
-                if (this.energy > 0.25) {
-                    c.shadowBlur = 10 * this.energy;
-                    c.shadowColor = "#ffffff";
-                    c.fillStyle = `rgba(255, 255, 255, ${alpha})`;
-                } else {
-                    c.shadowBlur = 0;
-                    c.fillStyle = `rgba(160, 175, 195, ${alpha})`;
-                }
-
-                c.fillText(this.char, this.x, this.y);
-            }
-        }
-
-        for (let i = 0; i < particleCount; i++) {
-            particles.push(new BinaryNode());
-        }
-
-        let mouseX = -9999;
-        let mouseY = -9999;
-        let mouseActive = false;
-        let mouseTimeout = null;
-
-        window.addEventListener("mousemove", (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            mouseActive = true;
-            clearTimeout(mouseTimeout);
-            mouseTimeout = setTimeout(() => {
-                mouseActive = false;
-            }, 2000);
-        });
-
-        window.addEventListener("resize", () => {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        });
-
-        const connectDist = 105;
-
-        function animateNetwork() {
-            ctx.clearRect(0, 0, width, height);
-
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update(mouseX, mouseY, mouseActive);
-            }
-
-            ctx.shadowBlur = 0;
-            for (let i = 0; i < particles.length; i++) {
-                const p1 = particles[i];
-                if (p1.energy < 0.1) continue;
-
-                for (let j = i + 1; j < particles.length; j++) {
-                    const p2 = particles[j];
-                    const dx = p1.x - p2.x;
-                    const dy = p1.y - p2.y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-
-                    if (dist < connectDist) {
-                        const factor = (1 - dist / connectDist) * 0.65;
-                        p2.energy = Math.max(p2.energy, p1.energy * factor);
-                        p1.energy = Math.max(p1.energy, p2.energy * factor);
-
-                        const arcAlpha =
-                            Math.min(p1.energy, p2.energy) *
-                            (1 - dist / connectDist) *
-                            0.4;
-                        if (arcAlpha > 0.04) {
-                            ctx.beginPath();
-                            ctx.moveTo(p1.x, p1.y);
-                            ctx.lineTo(p2.x, p2.y);
-                            ctx.strokeStyle = `rgba(255, 255, 255, ${arcAlpha})`;
-                            ctx.lineWidth = 1;
-                            ctx.stroke();
-                        }
-                    }
-                }
-            }
-
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].draw(ctx);
-            }
-
-            requestAnimationFrame(animateNetwork);
-        }
-
-        requestAnimationFrame(animateNetwork);
-    }
-
-    /* 8. ASCII Vault Modal */
-    const asciiModal = document.getElementById("asciiModal");
-    const asciiModalBackdrop = document.getElementById("asciiModalBackdrop");
-    const asciiCloseBtn = document.getElementById("asciiCloseBtn");
-    const asciiRerollBtn = document.getElementById("asciiRerollBtn");
-    const asciiBodyContainer = document.getElementById("asciiBodyContainer");
-    const asciiBannerDisplay = document.getElementById("asciiBannerDisplay");
-    const asciiFontBadge = document.getElementById("asciiFontBadge");
-    const asciiIndexCount = document.getElementById("asciiIndexCount");
-    const nickTriggers = document.querySelectorAll("#brandNickTrigger");
-
-    let currentAsciiIndex = -1;
-
-    function getRandomAsciiIndex() {
-        if (!window.ASCII_BANNERS || window.ASCII_BANNERS.length === 0)
-            return -1;
-        let nextIdx = Math.floor(Math.random() * window.ASCII_BANNERS.length);
-        if (window.ASCII_BANNERS.length > 1 && nextIdx === currentAsciiIndex) {
-            nextIdx = (nextIdx + 1) % window.ASCII_BANNERS.length;
-        }
-        return nextIdx;
-    }
-
-    function renderAscii(index) {
-        if (!window.ASCII_BANNERS || !window.ASCII_BANNERS[index]) return;
-        currentAsciiIndex = index;
-        const item = window.ASCII_BANNERS[index];
-
-        if (asciiBannerDisplay) {
-            asciiBannerDisplay.style.opacity = "0";
-            setTimeout(() => {
-                asciiBannerDisplay.textContent = item.art.replace(/^\n+/, "");
-                asciiBannerDisplay.style.opacity = "1";
-            }, 50);
-        }
-
-        if (asciiFontBadge) {
-            const fontName = (item.font || "UNKNOWN").toUpperCase();
-            const formattedIdx =
-                index + 1 < 10 ? `0${index + 1}` : `${index + 1}`;
-            asciiFontBadge.textContent = `FONT: ${fontName} [${formattedIdx}/${window.ASCII_BANNERS.length}]`;
-        }
-
-        if (asciiIndexCount) {
-            asciiIndexCount.textContent = `${window.ASCII_BANNERS.length} VARIANTS LOADED // CLICK TO REROLL`;
-        }
-    }
-
-    window.rerollAscii = function () {
-        const idx = getRandomAsciiIndex();
-        if (idx >= 0) renderAscii(idx);
-    };
-
-    window.openAsciiModal = function () {
-        if (!asciiModal) return;
-        asciiModal.classList.add("active");
-        document.body.style.overflow = "hidden";
-        window.rerollAscii();
-    };
-
-    window.closeAsciiModal = function () {
-        if (!asciiModal) return;
-        asciiModal.classList.remove("active");
-        document.body.style.overflow = "";
-    };
-
-    nickTriggers.forEach((el) => {
-        el.addEventListener("click", (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            window.openAsciiModal();
-        });
-    });
-
-    if (asciiCloseBtn)
-        asciiCloseBtn.addEventListener("click", window.closeAsciiModal);
-    if (asciiModalBackdrop)
-        asciiModalBackdrop.addEventListener("click", window.closeAsciiModal);
-    if (asciiRerollBtn)
-        asciiRerollBtn.addEventListener("click", (e) => {
-            e.stopPropagation();
-            window.rerollAscii();
-        });
-    if (asciiBodyContainer)
-        asciiBodyContainer.addEventListener("click", () => {
-            window.rerollAscii();
-        });
+    monitorFrame.focus();
 });
